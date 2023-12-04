@@ -1,0 +1,84 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C++: build all files in folder",
+			"command": "/usr/bin/c++",
+			"args": [
+				"-std=c++98",
+				// "-Wall",
+				"-Werror",
+				"-Wextra",
+				"-fdiagnostics-color=always",
+				"-g",
+				"${fileDirname}/*.cpp",
+				"-o",
+				"${fileDirname}/a.out"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"presentation": {
+				"reveal": "silent",
+				"revealProblems": "onProblem",
+				// "clear": false
+			},
+			"detail": "compile all files in folder with /usr/bin/c++"
+		},
+		{
+			"type": "shell",
+			"label": "C++: run compiled program from folder",
+			"command": "${fileDirname}/a.out",
+			"problemMatcher": [],
+			"dependsOn": "C++: build all files in folder",
+			"group": {
+				"kind": "test",
+				"isDefault": false
+			},
+			"presentation": {
+				// "echo": false,
+				"clear": true,
+				"focus": true
+			},
+			"detail": "execute C++ program"
+		},
+		{
+			"type": "process",
+			"label": "C++: make with makefile",
+			"command": "make",
+			// "args": [
+			// 	"run"
+			// ],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compile the project with the makefile",
+		},
+		{
+			"type": "shell",
+			"label": "C++: run makefile program",
+			"command": "./${fileBasenameNoExtension}",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"presentation": {
+				"focus": true
+			},
+			"dependsOn": "C++: make with makefile",
+			"detail": "execute C++ makefile program"
+		}
+	]
+}
