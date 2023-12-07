@@ -25,6 +25,7 @@ FG_LIGHT_BLUE 		:= \033[94m
 FG_LIGHT_MAGENTA 	:= \033[95m
 FG_LIGHT_CYAN 		:= \033[96m
 FG_WHITE 			:= \033[97m
+FG_ORANGE 			:= \033[38;5;208m
 
 BG_BLACK 			:= \033[40m
 BG_RED 				:= \033[41m
@@ -57,7 +58,6 @@ CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
 VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
-
 RM := rm -rf
 USER := $(shell whoami)
 
@@ -67,9 +67,9 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := megaphone
-# HEADER :=
-SRC := megaphone.cpp
+NAME := phonebook
+HEADER := Contact.hpp PhoneBook.hpp
+SRC := main.cpp Contact.cpp PhoneBook.cpp
 
 
 # -------------- RECIPES --------------
@@ -104,7 +104,8 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
 valgrind: test
 
-test: all
+run: all
+	@clear
 	$(VALGRIND) ./$(NAME)
 
 .PHONY: all clean fclean re debug valgrind test
