@@ -7,12 +7,12 @@
 			"command": "/usr/bin/c++",
 			"args": [
 				"-std=c++98",
-				// "-Wall",
 				"-Werror",
 				"-Wextra",
+				"-Wall",
 				"-fdiagnostics-color=always",
 				"-g",
-				"${fileDirname}/*.cpp",
+				"${fileDirname}/*.cpp ${fileDirname}/*.hpp",
 				"-o",
 				"${fileDirname}/a.out"
 			],
@@ -25,10 +25,10 @@
 			},
 			"presentation": {
 				"reveal": "silent",
-				"revealProblems": "onProblem",
-				// "clear": false
+				"revealProblems": "onProblem"
 			},
-			"detail": "compile all files in folder with /usr/bin/c++"
+			"detail": "maplepy: compile all files in folder with /usr/bin/c++",
+			"problemMatcher": []
 		},
 		{
 			"type": "shell",
@@ -41,32 +41,18 @@
 				"isDefault": false
 			},
 			"presentation": {
-				// "echo": false,
 				"clear": true,
 				"focus": true
 			},
-			"detail": "execute C++ program"
+			"detail": "maplepy: execute C++ program"
 		},
 		{
 			"type": "process",
 			"label": "C++: make with makefile",
 			"command": "make",
-			// "args": [
-			// 	"run"
-			// ],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compile the project with the makefile",
-		},
-		{
-			"type": "shell",
-			"label": "C++: run makefile program",
-			"command": "./${fileBasenameNoExtension}",
+			"args": [
+				"run"
+			],
 			"options": {
 				"cwd": "${fileDirname}"
 			},
@@ -74,11 +60,7 @@
 				"kind": "test",
 				"isDefault": true
 			},
-			"presentation": {
-				"focus": true
-			},
-			"dependsOn": "C++: make with makefile",
-			"detail": "execute C++ makefile program"
+			"detail": "maplepy: compile the project with the makefile",
 		}
 	]
 }
