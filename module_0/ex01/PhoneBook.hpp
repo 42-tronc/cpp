@@ -9,7 +9,8 @@ public:
     void addContact();
     void searchContact();
 private:
-    int contactCount;
+    short index;
+    short contactCount;
     Contact contacts[8];
 };
 

@@ -1,23 +1,23 @@
 #include <iomanip>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : contactCount(0) {
+PhoneBook::PhoneBook() : index(0), contactCount(0) {
 }
 
 void PhoneBook::addContact() {
     std::cout << printAction("ADDING A NEW CONTACT");
 
-    if (contactCount == 8) {
-        std::cout << "\e[31mPhoneBook is full\e[0m\n\n";
-        return;
-    }
-    contacts[contactCount].setFirstName(getValidInput("Enter first name: "));
-    contacts[contactCount].setLastName(getValidInput("Enter last name: "));
-    contacts[contactCount].setNickname(getValidInput("Enter nickname: "));
-    contacts[contactCount].setPhoneNumber(getValidInput("Enter phone number: "));
-    contacts[contactCount].setDarkestSecret(getValidInput("Enter darkest secret: "));
-    contactCount < 8 ? contactCount++ : contactCount = 0;
-    // contactCount++;
+    if (contactCount == 8)
+        std::cout << "\e[31mPhoneBook is full\e[0m\nOverwriting the oldest contact\n\n";
+    else
+        contactCount++;
+
+    contacts[index].setFirstName(getValidInput("Enter first name: "));
+    contacts[index].setLastName(getValidInput("Enter last name: "));
+    contacts[index].setNickname(getValidInput("Enter nickname: "));
+    contacts[index].setPhoneNumber(getValidInput("Enter phone number: "));
+    contacts[index].setDarkestSecret(getValidInput("Enter darkest secret: "));
+    index < 7 ? index++ : index = 0;
 
     std::cout << "\e[32mContact added successfully\e[0m\n\n";
 }
@@ -62,7 +62,6 @@ void PhoneBook::searchContact() {
         return;
     }
     int index = std::atoi(input.c_str());
-    std::cout << "Index: " << index << "\n"; // TODO: remove
 
     if (index < 0 || index >= contactCount)
         std::cout << "Index is out of range\n";

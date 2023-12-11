@@ -20,7 +20,7 @@ std::string Contact::getPhoneNumber() const {
 }
 
 std::string Contact::getDarkestSecret() const {
-    return std::string();
+    return darkestSecret;
 }
 
 void Contact::setFirstName(const std::string &firstName) {
