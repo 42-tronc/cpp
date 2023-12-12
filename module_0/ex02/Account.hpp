@@ -38,7 +38,9 @@ private:
     static int _totalAmount;
     static int _totalNbDeposits;
     static int _totalNbWithdrawals;
+
     static void _displayTimestamp(void);
+
     int _accountIndex;
     int _amount;
     int _nbDeposits;
