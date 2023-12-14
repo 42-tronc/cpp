@@ -48,7 +48,7 @@
 		},
 		{
 			"type": "process",
-			"label": "C++: make with makefile",
+			"label": "C++: make run",
 			"command": "make",
 			"args": [
 				"run"
@@ -60,7 +60,23 @@
 				"kind": "test",
 				"isDefault": true
 			},
-			"detail": "maplepy: compile the project with the makefile",
-		}
+			"detail": "maplepy: compile the project with the makefile and run it",
+		},
+		{
+			"type": "process",
+			"label": "C++: make valgrind",
+			"command": "make",
+			"args": [
+				"valgrind"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": false
+			},
+			"detail": "maplepy: compile the project with the makefile and run it with valgrind",
+		},
 	]
 }
