@@ -67,9 +67,9 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := megaphone
-# HEADER :=
-SRC := megaphone.cpp
+NAME := account
+HEADER := Account.hpp
+SRC := Account.cpp tests.cpp
 
 
 # -------------- RECIPES --------------
@@ -104,7 +104,7 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
 valgrind: test
 
-test: all
+run: all
 	$(VALGRIND) ./$(NAME)
 
 .PHONY: all clean fclean re debug valgrind test
