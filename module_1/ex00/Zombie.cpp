@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) : name(name) {}
+Zombie::Zombie(const std::string& name) : name(name) {}
 
 Zombie::Zombie(const Zombie& source) {
     this->name = source.name;
