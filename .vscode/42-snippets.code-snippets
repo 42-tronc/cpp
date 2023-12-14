@@ -28,4 +28,24 @@
 		],
 		"description": "Create main function"
 	},
+	"replace to std::string": {
+		"prefix": "str",
+		"body": ["std::string"],
+		"description": "replace to std::string"
+	},
+	"replace to std::cout": {
+		"prefix": "cout",
+		"body": ["std::cout"],
+		"description": "replace to std::cout"
+	},
+	"replace to std::endl": {
+		"prefix": "endl",
+		"body": ["std::endl"],
+		"description": "replace to std::endl"
+	},
+	"replace to std::cin": {
+		"prefix": "cin",
+		"body": ["std::cin"],
+		"description": "replace to std::cin"
+	},
 }
