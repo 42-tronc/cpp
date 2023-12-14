@@ -1,3 +1,13 @@
+# Ignore everyfile without an extension except for Makefile
+*
+!*/
+!*.*
+!Makefile
+# * tells git to ignore everything
+# !*/ tells git to not ignore directories
+# !*.* tells git to not ignore files with extensions
+# !Makefile tells git to not ignore Makefile
+
 # Prerequisites
 *.d
 
