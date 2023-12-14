@@ -28,22 +28,39 @@
 		],
 		"description": "Create main function"
 	},
+	"Create void main": {
+		"scope": "cpp",
+		"prefix": "vmain",
+		"body": [
+			"",
+			"int main() {",
+			"\t$1",
+			"",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "Create main function with no arguments"
+	},
 	"replace to std::string": {
+		"scope": "cpp",
 		"prefix": "str",
 		"body": ["std::string"],
 		"description": "replace to std::string"
 	},
 	"replace to std::cout": {
+		"scope": "cpp",
 		"prefix": "cout",
 		"body": ["std::cout"],
 		"description": "replace to std::cout"
 	},
 	"replace to std::endl": {
+		"scope": "cpp",
 		"prefix": "endl",
 		"body": ["std::endl"],
 		"description": "replace to std::endl"
 	},
 	"replace to std::cin": {
+		"scope": "cpp",
 		"prefix": "cin",
 		"body": ["std::cin"],
 		"description": "replace to std::cin"
