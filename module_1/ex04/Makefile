@@ -104,6 +104,6 @@ valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
 valgrind: run
 
 run: all
-	$(VALGRIND) ./$(NAME) test.txt word
+	$(VALGRIND) ./$(NAME) test.txt word blob
 
 .PHONY: all clean fclean re debug valgrind test
