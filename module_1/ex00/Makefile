@@ -56,7 +56,7 @@ RESET		:= \033[0m
 CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
-VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
 USER := $(shell whoami)
@@ -102,7 +102,7 @@ debug: C_FLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
 
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
-valgrind: test
+valgrind: run
 
 run: all
 	$(VALGRIND) ./$(NAME)
