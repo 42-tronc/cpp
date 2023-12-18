@@ -35,11 +35,13 @@ bool Sed::writeFile(std::string filename) {
         std::string str;
         getline(infile, str);
 
-        while (str.find(s1) != std::string::npos) {
-            size_t pos = str.find(s1);
-
-            str.erase(pos, s1.length());
-            str.insert(pos, s2);
+        for (size_t i = 0; i < str.length(); i++) {
+            size_t pos = str.find(s1, i);
+            if (pos == i) {
+                str.erase(pos, s1.length());
+                str.insert(pos, s2);
+                i += s2.length() - 1;
+            }
         }
         outfile << str << std::endl;
     }
