@@ -13,7 +13,7 @@ public:
     bool writeFile(std::string filename);
 
 private:
-    std::ifstream infile;
+    std::fstream infile;
     std::ofstream outfile;
     std::string s1;
     std::string s2;
