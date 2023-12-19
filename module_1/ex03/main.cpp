@@ -31,13 +31,16 @@ int main() {
     printAction(
         "Giving no weapon to HumanB before attack and then giving a weapon");
     {
-        Weapon club = Weapon("crude spiked club");
+        Weapon sword = Weapon("sharp sword");
+        Weapon shuriken = Weapon("star shuriken");
 
         HumanB Dwight("Dwight");
         Dwight.attack();
-        Dwight.setWeapon(club);
+        Dwight.setWeapon(sword);
         Dwight.attack();
-        club.setType("some other type of club");
+        sword.setType("sharp katana");
+        Dwight.attack();
+        Dwight.setWeapon(shuriken);
         Dwight.attack();
     }
 
