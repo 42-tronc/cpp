@@ -1,7 +1,6 @@
 #include "Contact.hpp"
 
-Contact::Contact() {
-}
+Contact::Contact() {}
 
 std::string Contact::getFirstName() const {
     return firstName;
@@ -23,7 +22,7 @@ std::string Contact::getDarkestSecret() const {
     return darkestSecret;
 }
 
-void Contact::setFirstName(const std::string &firstName) {
+void Contact::setFirstName(const std::string& firstName) {
     this->firstName = firstName;
 }
 
@@ -39,7 +38,7 @@ void Contact::setPhoneNumber(const std::string& phoneNumber) {
     this->phoneNumber = phoneNumber;
 }
 
-void Contact::setDarkestSecret(const std::string &darkestSecret) {
+void Contact::setDarkestSecret(const std::string& darkestSecret) {
     this->darkestSecret = darkestSecret;
 }
 
@@ -51,7 +50,7 @@ std::string printAction(std::string str) {
     return "\ec\e[1;33m* \e[21m\e[34m" + str + "\e[0m\n\n";
 }
 
-std::string getValidInput(const std::string &prompt) {
+std::string getValidInput(const std::string& prompt) {
     std::string input;
 
     while (true) {
