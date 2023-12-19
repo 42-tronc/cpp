@@ -27,3 +27,8 @@ void Fixed::setRawBits(int const raw) {
     // std::cout << "\e[34msetting raw value to\e[0m " << raw << std::endl;
     this->fixedPointValue = raw;
 }
+
+std::ostream& operator<<(std::ostream& stream, const Fixed& fixed) {
+    stream << fixed.toFloat();
+    return stream;
+}
