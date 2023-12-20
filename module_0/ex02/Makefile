@@ -102,7 +102,7 @@ debug: C_FLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
 
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
-valgrind: test
+valgrind: run
 
 run: all
 	$(VALGRIND) ./$(NAME)
