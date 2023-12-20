@@ -1,9 +1,9 @@
+#include <stdlib.h>
+
 #include <iostream>
 #include <limits>
-#include <stdlib.h>
-#include "PhoneBook.hpp"
 
-// void addContact(PhoneBook &phoneBook)
+#include "PhoneBook.hpp"
 
 int main(void) {
     PhoneBook phoneBook;

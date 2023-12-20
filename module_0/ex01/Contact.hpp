@@ -1,9 +1,10 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
+#include <stdlib.h>
+
 #include <iostream>
 #include <limits>
-#include <stdlib.h>
 
 class Contact {
 public:
@@ -30,6 +31,6 @@ private:
 
 std::string printAction(std::string str);
 std::string printUnderlined(std::string str);
-std::string getValidInput(const std::string &prompt);
+std::string getValidInput(const std::string& prompt);
 
 #endif
