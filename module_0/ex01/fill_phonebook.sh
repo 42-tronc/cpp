@@ -29,4 +29,4 @@ fill_phonebook "Aurelien" "Leleu" "aleleu" "0987654321" "was born at 40 years ol
 fill_phonebook "Lucas" "Moine" "lmoine" "0987654321" "never drank water or coded in his life"
 fill_phonebook "Cherif" "El-Omar" "celomar" "8464" "is an impressive joueur de pipeau"
 fill_phonebook "Ethaniel" "Billon" "ebillon" "0000" "is scam artist"
-fill_phonebook "LOUISALALALALAALA" "LALALALALALALALA" "????" "0000" "(not) secretly hates croy"
+fill_phonebook "LOUISALALALALAALA" "LALALALALALALALA" "????" "." "(not) secretly hates croy"
