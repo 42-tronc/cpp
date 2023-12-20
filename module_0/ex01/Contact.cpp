@@ -56,8 +56,10 @@ std::string getValidInput(const std::string& prompt) {
     while (true) {
         std::cout << prompt;
         std::getline(std::cin, input);
+        if (input.compare(0, 1, " ") == 0 || input.compare(0, 1, "\t") == 0)
+            std::cout << "\e[31mInput cannot start with a space\e[0m\n";
         if (std::cin.eof())
-            std::exit(0);
+            return input;
         else if (!input.empty())
             break;
         else if (std::cin.fail()) {

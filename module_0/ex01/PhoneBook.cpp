@@ -13,10 +13,15 @@ void PhoneBook::addContact() {
         contactCount++;
 
     contacts[index].setFirstName(getValidInput("Enter first name: "));
+    if (contacts[index].getFirstName().empty()) return;
     contacts[index].setLastName(getValidInput("Enter last name: "));
+    if (contacts[index].getLastName().empty()) return;
     contacts[index].setNickname(getValidInput("Enter nickname: "));
+    if (contacts[index].getNickname().empty()) return;
     contacts[index].setPhoneNumber(getValidInput("Enter phone number: "));
+    if (contacts[index].getPhoneNumber().empty()) return;
     contacts[index].setDarkestSecret(getValidInput("Enter darkest secret: "));
+    if (contacts[index].getDarkestSecret().empty()) return;
     index < 7 ? index++ : index = 0;
 
     std::cout << "\e[32mContact added successfully\e[0m\n\n";
@@ -57,12 +62,13 @@ void PhoneBook::searchContact() {
     }
 
     std::string input = getValidInput("Enter an index: ");
+    if (input.empty()) return;
     if (!isNumber(input)) {
         std::cout << "Index must be a number\n";
         return;
     }
-    int index = std::atoi(input.c_str());
 
+    int index = std::atoi(input.c_str());
     if (index < 0 || index >= contactCount)
         std::cout << "Index is out of range\n";
     else {

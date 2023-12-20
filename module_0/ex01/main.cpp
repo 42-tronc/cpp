@@ -16,6 +16,7 @@ int main(void) {
 
     while (true) {
         std::string input = getValidInput("\n\e[90mChoice: \e[0m");
+        if (input.empty()) break;
 
         if (input == "EXIT")
             break;
