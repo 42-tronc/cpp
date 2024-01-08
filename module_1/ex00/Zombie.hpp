@@ -5,9 +5,7 @@
 
 class Zombie {
 public:
-    Zombie(const std::string& name); // Constructor
-    Zombie(const Zombie& source); // Copy constructor
-    Zombie& operator=(const Zombie& source); // Copy assignment operator
+    Zombie(const std::string& name);
     ~Zombie();
 
     void announce();
