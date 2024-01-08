@@ -8,6 +8,9 @@
 # !*.* tells git to not ignore files with extensions
 # !Makefile tells git to not ignore Makefile
 
+# Ignore this annoying file
+.vscode/settings.json
+
 # Prerequisites
 *.d
 
