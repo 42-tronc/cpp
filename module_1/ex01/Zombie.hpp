@@ -7,8 +7,6 @@ class Zombie {
 public:
     Zombie();
     Zombie(const std::string& name);
-    Zombie(const Zombie& source);
-    Zombie& operator=(const Zombie& source);
     ~Zombie();
 
     void announce();
