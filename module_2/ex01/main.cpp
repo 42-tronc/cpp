@@ -7,19 +7,31 @@ void printAction(std::string str) {
 }
 
 int main(void) {
+    printAction("a with default constructor");
     Fixed a;
+    printAction("b with int constructor");
     Fixed const b(10);
+    printAction("c with float constructor");
     Fixed const c(42.42f);
+    printAction("d with copy constructor");
     Fixed const d(b);
+
+    printAction("a with assignation operator");
     a = Fixed(1234.4321f);
 
-    std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << std::endl;
-    std::cout << "c is " << c << std::endl;
-    std::cout << "d is " << d << std::endl;
-    // std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    // std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-    // std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-    // std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+    printAction("Float values");
+    std::cout << "a is " << a << std::endl
+              << "b is " << b << std::endl
+              << "c is " << c << std::endl
+              << "d is " << d << std::endl;
+
+    printAction("Integer values");
+    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
+    printAction("Exiting the program");
+
     return 0;
 }
