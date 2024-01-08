@@ -68,8 +68,8 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 # --------- PROJECT VARIABLES ---------
 NAME := a.out
-HEADER := Fixed.hpp
-SRC := main.cpp Fixed.cpp
+HEADER := Fixed.hpp Point.hpp
+SRC := main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 # -------------- RECIPES --------------
 all: $(NAME) | $(OBJ_DIR)

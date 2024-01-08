@@ -13,8 +13,6 @@ public:
     Fixed(const Fixed& fixed);
     ~Fixed();
 
-    Fixed& operator=(const Fixed& fixed);
-
     bool operator>(const Fixed& other) const;
     bool operator<(const Fixed& other) const;
     bool operator>=(const Fixed& other) const;
@@ -25,6 +23,7 @@ public:
     Fixed operator-(const Fixed& other) const;
     Fixed operator*(const Fixed& other) const;
     Fixed operator/(const Fixed& other) const;
+    Fixed& operator=(const Fixed& fixed);
     Fixed& operator++();  // prefix (++fixed)
     Fixed operator++(int);  // postfix (fixed++)
     Fixed& operator--();  // prefix (--fixed)
