@@ -7,7 +7,7 @@ void printAction(std::string str) {
 }
 
 void printResult(bool result, std::string msg) {
-    std::cout << msg << ": "
+    std::cout << msg
               << (result ? "\e[1;32m in the triangle\e[0m"
                          : "\e[1;31m outside the triangle\e[0m")
               << std::endl;
@@ -62,33 +62,16 @@ int main() {
     Point c5(2, 4);
     Point point5(2, 0);
     bool result5 = bsp(a5, b5, c5, point5);
-    printResult(result5,
-        "After a very long reflection, we determined that the point is");
+    printResult(result5, "You won't believe it, but the point is actually");
+
+    // Test case 6: Points form a triangle, point is barely inside the triangle
+    printAction("Test case 6: point is barely inside the triangle");
+    Point a6(0, 0);
+    Point b6(4, 0);
+    Point c6(2, 4);
+    Point point6(2, 0.01);
+    bool result6 = bsp(a6, b6, c6, point6);
+    printResult(result6, "We are 99% sure that the point is");
 
     return 0;
 }
-
-// int main(void) {
-//     Point a(0, 0), b(5, 0), c(0, 3), point(1, 1);
-//     std::cout << "Result : " << bsp(a, b, c, point) << " | answer : 1"
-//               << std::endl;
-//     Point d(0, 0), e(-5, 0), f(0, 3), point1(1, 1);
-//     std::cout << "Result : " << bsp(d, e, f, point1) << " | answer : 0"
-//               << std::endl;
-//     Point g(0, 0), h(5, 0), i(10, 3), point2(1, 1);
-//     std::cout << "Result : " << bsp(g, h, i, point2) << " | answer : 0"
-//               << std::endl;
-//     Point j(10, 0), k(15, 20), l(10, 13), point3(1, 1);
-//     std::cout << "Result : " << bsp(j, k, l, point3) << " | answer : 0"
-//               << std::endl;
-//     Point m(1, 0), n(5, 0), o(0, 3), point4(1, 1);
-//     std::cout << "Result : " << bsp(m, n, o, point4) << " | answer : 1"
-//               << std::endl;
-//     Point r(10, 0), s(15, 20), t(10, 13), point5(11, 8);
-//     std::cout << "Result : " << bsp(r, s, t, point5) << " | answer : 1"
-//               << std::endl;
-//     Point u(10, 0), v(15, 20), w(10, 13), point6(10, 0);
-//     std::cout << "Result : " << bsp(u, v, w, point6) << " | answer : 0"
-//               << std::endl;
-//     return 0;
-// }
