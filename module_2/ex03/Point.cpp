@@ -4,20 +4,20 @@ Point::Point() : x(0), y(0) {}
 
 Point::Point(float const x, float const y) : x(x), y(y) {}
 
-Point::Point(Point const& src) {
+Point::Point(const Point &src) : x(src.x), y(src.y) {
     *this = src;
 }
 
 Point::~Point() {}
 
-Point& Point::operator=(const Point&) {
+Point &Point::operator=(const Point &) {
     return *this;
 }
 
-Fixed const& Point::getX() const {
-    return x;
+float Point::getX(void) const {
+    return this->x.toFloat();
 }
 
-Fixed const& Point::getY() const {
-    return y;
+float Point::getY(void) const {
+    return this->y.toFloat();
 }
