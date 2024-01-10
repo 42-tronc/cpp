@@ -1,16 +1,16 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-    std::cout << "\e[32mScavTrap (" << this->name << ") constructor called\e[0m"
-              << std::endl;
+    std::cout << "\e[32mScavTrap (\e[3;37m" << this->name
+              << "\e[;32m) constructor called\e[0m" << std::endl;
     this->hp = 100;
     this->energy = 50;
     this->dmg = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
-    std::cout << "\e[33mScavTrap (" << this->name
-              << ") copy constructor called\e[0m" << std::endl;
+    std::cout << "\e[33mScavTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) copy constructor called\e[0m" << std::endl;
     // this->name = other.name;
     // this->hp = other.hp;
     // this->energy = other.energy;
@@ -19,13 +19,13 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "\e[31mScavTrap (" << this->name << ") destructor called\e[0m"
-              << std::endl;
+    std::cout << "\e[31mScavTrap (\e[3;37m" << this->name
+              << "\e[;31m) destructor called\e[0m" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(ScavTrap const& other) {
-    std::cout << "\e[33mScavTrap (" << this->name
-              << ") assignation operator called\e[0m" << std::endl;
+    std::cout << "\e[33mScavTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
     this->energy = other.energy;
@@ -45,7 +45,8 @@ void ScavTrap::attack(const std::string& target) {
 }
 
 void ScavTrap::guardGate() {
-    std::cout << "\e[1;33mScavTrap (" << this->name
-              << ") has entered in \e[1;31mGate Keeper 󰒘\e[1;33m mode\e[0m"
+    if (!checkAlive(*this)) return;
+    std::cout << "\e[3;37m" << this->name
+              << "\e[0m has entered in \e[1;36mGate Keeping 󱢾\e[0m mode"
               << std::endl;
 }
