@@ -23,7 +23,7 @@ ScavTrap::~ScavTrap() {
               << "\e[;31m) destructor called\e[0m" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(ScavTrap const& other) {
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
     std::cout << "\e[33mScavTrap (\e[3;37m" << other.getName()
               << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
