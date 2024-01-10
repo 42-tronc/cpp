@@ -1,24 +1,24 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), hp(10), energy(10), dmg(0) {
-    std::cout << "\e[32mClapTrap (" << this->name << ") constructor called\e[0m"
-              << std::endl;
+    std::cout << "\e[32mClapTrap (\e[3;37m" << this->name
+              << "\e[;32m) constructor called\e[0m" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
-    std::cout << "\e[33mClapTrap (" << other.getName()
-              << ") copy constructor called\e[0m" << std::endl;
+    std::cout << "\e[33mClapTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) copy constructor called\e[0m" << std::endl;
     *this = other;
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "\e[31mClapTrap (" << this->name << ") destructor called\e[0m"
-              << std::endl;
+    std::cout << "\e[31mClapTrap (\e[3;37m" << this->name
+              << "\e[;31m) destructor called\e[0m" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& other) {
-    std::cout << "\e[33mClapTrap (" << other.getName()
-              << ") assignation operator called\e[0m" << std::endl;
+    std::cout << "\e[33mClapTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
     this->energy = other.energy;
@@ -74,7 +74,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 bool ClapTrap::checkAlive(ClapTrap& player) {
     if (player.hp <= 0) {
         std::cout << "\e[3;37m" << player.name
-                  << " is already \e[1;31mdead 󰚌 !\e[0m" << std::endl;
+                  << "\e[m is already \e[1;31mdead 󰚌 !\e[0m" << std::endl;
         std::cout << "\t\e[21;33mSomeone stop this man!\e[0m" << std::endl;
         return false;
     }
