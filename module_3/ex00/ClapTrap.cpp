@@ -21,6 +21,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other) {
               << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
+    this->maxHp = this->hp;
     this->energy = other.energy;
     this->dmg = other.dmg;
     return *this;
@@ -58,9 +59,9 @@ void ClapTrap::takeDamage(unsigned int amount) {
 void ClapTrap::beRepaired(unsigned int amount) {
     if (!checkAlive(*this) || !checkEnergy(*this)) return;
     std::string repairStatus;
-    if (amount + this->hp > 10) {
+    if (amount + this->hp > maxHp) {
         repairStatus = "fully repaired";
-        amount = 10 - this->hp;
+        amount = maxHp - this->hp;
     } else
         repairStatus = "repaired";
     this->hp += amount;

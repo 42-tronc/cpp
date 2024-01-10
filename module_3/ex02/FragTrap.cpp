@@ -4,6 +4,7 @@ FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
     std::cout << "\e[32mFragTrap (\e[3;37m" << this->name
               << "\e[;32m) constructor called\e[0m" << std::endl;
     this->hp = 100;
+    this->maxHp = this->hp;
     this->energy = 100;
     this->dmg = 30;
 }

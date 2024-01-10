@@ -27,6 +27,7 @@ public:
 private:
     std::string name;
     unsigned int hp;
+    unsigned int maxHp;
     unsigned int energy;
     unsigned int dmg;
 };
