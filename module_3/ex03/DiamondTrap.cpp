@@ -1,0 +1,39 @@
+#include "DiamondTrap.hpp"
+
+DiamondTrap::DiamondTrap(std::string name)
+    : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name) {
+    std::cout << "\e[32mDiamondTrap (\e[3;37m" << name
+              << "\e[;32m) constructor called\e[0m" << std::endl;
+    this->name = name;
+    this->hp = FragTrap::hp;
+    this->maxHp = this->hp;
+    this->energy = FragTrap::energy;
+    this->dmg = FragTrap::dmg;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap& other)
+    : ClapTrap(other), FragTrap(other), ScavTrap(other) {
+    std::cout << "\e[33mDiamondTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) copy constructor called\e[0m" << std::endl;
+    *this = other;
+}
+
+DiamondTrap::~DiamondTrap() {
+    std::cout << "\e[31mDiamondTrap (\e[3;37m" << this->name
+              << "\e[;31m) destructor called\e[0m" << std::endl;
+}
+
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
+    std::cout << "\e[33mDiamondTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) operator= called\e[0m" << std::endl;
+    this->name = other.name;
+    this->dmg = other.dmg;
+    this->energy = other.energy;
+    this->hp = other.hp;
+    return *this;
+}
+
+void DiamondTrap::whoAmI() {
+    std::cout << "\e[3;37m" << this->name << "\e[0m is "
+              << "\e[1;35m" << this->ClapTrap::name << "\e[0m" << std::endl;
+}
