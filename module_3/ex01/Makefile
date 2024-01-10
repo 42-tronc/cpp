@@ -67,7 +67,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := claptrap
+NAME := scavtrap
 HEADER := ClapTrap.hpp ScavTrap.hpp
 SRC := main.cpp ClapTrap.cpp ScavTrap.cpp
 
