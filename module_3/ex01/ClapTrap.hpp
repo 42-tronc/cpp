@@ -24,7 +24,7 @@ public:
     unsigned int getEnergy() const;
     void setDmg(unsigned int dmg);
 
-private:
+protected:
     std::string name;
     unsigned int hp;
     unsigned int energy;
