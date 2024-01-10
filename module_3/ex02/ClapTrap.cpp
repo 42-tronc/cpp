@@ -113,6 +113,6 @@ unsigned int ClapTrap::getEnergy() const {
 // Setters
 void ClapTrap::setDmg(unsigned int dmg) {
     this->dmg = dmg;
-    std::cout << "\e[3;37m" << this->name << " now has \e[1;31m" << dmg
+    std::cout << "\e[3;37m" << this->name << "\e[m now has \e[1;31m" << dmg
               << " 󰓥 attack damage\e[0m" << std::endl;
 }
