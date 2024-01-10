@@ -20,6 +20,8 @@ FragTrap::~FragTrap() {
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other) {
+    std::cout << "\e[33mFragTrap (\e[3;37m" << other.getName()
+              << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->dmg = other.dmg;
     this->energy = other.energy;
