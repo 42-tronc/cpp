@@ -28,9 +28,8 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other) {
 
 void ClapTrap::attack(const std::string& target) {
     if (!checkAlive(*this) || !checkEnergy(*this)) return;
-    std::cout << "ClapTrap \e[3;37m" << this->name
-              << " \e[;1;91mattacks\e[;3;37m " << target
-              << "\e[0m, causing \e[1;31m" << this->dmg
+    std::cout << "\e[3;37m" << this->name << " \e[;1;91mattacks\e[;3;37m "
+              << target << "\e[0m, causing \e[1;31m" << this->dmg
               << "\e[m points of damage!\e[0m" << std::endl;
     if (this->dmg == 0)
         std::cout << "\t\e[21;33mWow! that's embarrassing!\e[0m" << std::endl;
