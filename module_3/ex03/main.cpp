@@ -30,14 +30,26 @@ int main() {
 
     printAction("Make " + diamondTrap.getName() + " be repaired");
     diamondTrap.beRepaired(10);
+
+    printAction("Make " + diamondTrap.getName() + " guard the gate");
     diamondTrap.guardGate();
 
-    // printAction(
-    //     "Make " + fragTrap.getName() + " attack " + diamondTrap.getName());
-    // for (int i = 0; i < 6; i++) {
-    //     fragTrap.attack(diamondTrap.getName());
-    //     diamondTrap.takeDamage(fragTrap.getDmg());
-    // }
+    printAction("Make " + diamondTrap.getName() + " high five");
+    diamondTrap.highFivesGuys();
+
+    printAction(
+        "Make " + fragTrap.getName() + " attack " + diamondTrap.getName());
+    for (int i = 0; i < 6; i++) {
+        fragTrap.attack(diamondTrap.getName());
+        diamondTrap.takeDamage(fragTrap.getDmg());
+        std::cout << std::endl;
+    }
+
+    printAction(
+        "Make " + diamondTrap.getName() + " try to do actions when dead");
+    diamondTrap.beRepaired(10);
+    diamondTrap.guardGate();
+    diamondTrap.highFivesGuys();
 
     printAction("Exiting the program");
 
