@@ -74,8 +74,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 bool ClapTrap::checkAlive(ClapTrap& player) {
     if (player.hp <= 0) {
         std::cout << "\e[3;37m" << player.name
-                  << "\e[m is already \e[1;31mdead 󰚌 !\e[0m" << std::endl;
-        std::cout << "\t\e[21;33mSomeone stop this man!\e[0m" << std::endl;
+                  << "\e[m is \e[1;31mdead 󰚌\e[m !" << std::endl;
         return false;
     }
     return true;
