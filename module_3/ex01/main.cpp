@@ -13,12 +13,26 @@ int main() {
     printAction("Creating a copy of ScavTrap object");
     ScavTrap copyCat(john);
 
-    printAction("Giving ClapTrap 15 attack damage");
+    printAction("Giving " + clapTrap.getName() + " 15 attack damage");
     clapTrap.setDmg(15);
 
-    printAction("Make John attack ScavTrap2");
+    printAction("Make " + john.getName() + " attack " + rudolf.getName());
     john.attack(rudolf.getName());
     rudolf.takeDamage(john.getDmg());
+
+    printAction("ClapTrap attacks " + rudolf.getName());
+    for (int i = 0; i < 6; i++) {
+        clapTrap.attack(rudolf.getName());
+        rudolf.takeDamage(clapTrap.getDmg());
+    }
+
+    printAction("Make everyone guard the gate");
+    rudolf.guardGate();
+    // clapTrap.guardGate();
+    john.guardGate();
+
+    printAction("Make " + john.getName() + " no longer guard the gate");
+    john.guardGate();
 
     printAction("Exiting the program");
 
