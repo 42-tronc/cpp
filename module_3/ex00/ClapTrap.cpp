@@ -1,11 +1,13 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), hp(10), energy(10), dmg(0) {
-    std::cout << "\e[32mClapTrap constructor called\e[0m" << std::endl;
+    std::cout << "\e[32mClapTrap (" << this->name << ") constructor called\e[0m"
+              << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
-    std::cout << "\e[33mClapTrap copy constructor called\e[0m" << std::endl;
+    std::cout << "\e[33mClapTrap (" << other.getName()
+              << ") copy constructor called\e[0m" << std::endl;
     *this = other;
 }
 
@@ -15,7 +17,8 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& other) {
-    std::cout << "\e[33mClapTrap assignment operator called\e[0m" << std::endl;
+    std::cout << "\e[33mClapTrap (" << other.getName()
+              << ") assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
     this->energy = other.energy;
