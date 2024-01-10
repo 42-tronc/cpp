@@ -84,7 +84,7 @@ bool ClapTrap::checkAlive(ClapTrap& player) {
 bool ClapTrap::checkEnergy(ClapTrap& player) {
     if (player.energy <= 0) {
         std::cout << "\e[3;37m" << player.name
-                  << "is out of \e[1;33menergy !\e[0m" << std::endl;
+                  << " is out of \e[1;33menergy !\e[0m" << std::endl;
         return false;
     } else
         player.energy--;
