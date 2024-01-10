@@ -43,6 +43,14 @@ int main() {
         rudolf.takeDamage(john.getDmg());
     }
 
+    printAction("Make ClapTrap overpowered and kill John");
+    clapTrap.setDmg(100);
+    clapTrap.attack(john.getName());
+    john.takeDamage(clapTrap.getDmg());
+
+    printAction("Make John try to high five but he's dead");
+    john.highFivesGuys();
+
     printAction("Exiting the program");
 
     return 0;
