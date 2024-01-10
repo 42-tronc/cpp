@@ -46,7 +46,12 @@ void ScavTrap::attack(const std::string& target) {
 
 void ScavTrap::guardGate() {
     if (!checkAlive(*this)) return;
-    std::cout << "\e[3;37m" << this->name
-              << "\e[0m has entered in \e[1;36mGate Keeping 󱢾\e[0m mode"
-              << std::endl;
+    std::string guardStatus;
+    if (guarding)
+        guardStatus = "no longer";
+    else
+        guardStatus = "now";
+    guarding = !guarding;
+    std::cout << "\e[3;37m" << this->name << "\e[0m is " << guardStatus
+              << " in \e[1;36mGate Keeping 󱢾\e[0m mode" << std::endl;
 }
