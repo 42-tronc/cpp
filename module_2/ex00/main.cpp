@@ -31,7 +31,9 @@ int main(void) {
 
     printAction("Changing the value of `c`");
     c.setRawBits(42);
-    std::cout << "c = " << c.getRawBits() << std::endl;
+    std::cout << "a = " << a.getRawBits() << std::endl
+              << "b = " << b.getRawBits() << std::endl
+              << "c = " << c.getRawBits() << std::endl;
 
     printAction("Exiting the program");
 
