@@ -31,6 +31,9 @@ int main() {
               << std::endl;
     thomas.beRepaired(10);
 
+    printAction("Repair George back to full health");
+    george.beRepaired(10 - george.getHp());
+
     printAction("Give George Washington an attack damage of 15");
     george.setDmg(15);
 
