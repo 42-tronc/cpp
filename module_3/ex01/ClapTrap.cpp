@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), hp(10), energy(10), dmg(0) {
+    this->maxHp = this->hp;
     std::cout << "\e[32mClapTrap (\e[3;37m" << this->name
               << "\e[;32m) constructor called\e[0m" << std::endl;
 }

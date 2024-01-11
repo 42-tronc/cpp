@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), hp(10), energy(10), dmg(0) {
+    this->maxHp = this->hp;
     std::cout << "\e[32mClapTrap (\e[3;37m" << this->name
               << "\e[;32m) constructor called\e[0m" << std::endl;
 }
@@ -59,9 +60,9 @@ void ClapTrap::takeDamage(unsigned int amount) {
 void ClapTrap::beRepaired(unsigned int amount) {
     if (!checkAlive(*this) || !checkEnergy(*this)) return;
     std::string repairStatus;
-    if (amount + this->hp > maxHp) {
+    if (amount + this->hp >= this->maxHp) {
         repairStatus = "fully repaired";
-        amount = maxHp - this->hp;
+        amount = this->maxHp - this->hp;
     } else
         repairStatus = "repaired";
     this->hp += amount;
