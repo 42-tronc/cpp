@@ -11,6 +11,7 @@ int main() {
     FragTrap john("John");
     ScavTrap rudolf("Rudolf");
     ClapTrap clapTrap("ClapTrap");
+    FragTrap fragTrap;
 
     printAction("Creating a copy of FragTrap object");
     FragTrap copyCat(john);
