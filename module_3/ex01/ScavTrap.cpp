@@ -1,5 +1,15 @@
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() : ClapTrap("ScavTrap") {
+    std::cout << "\e[32mScavTrap (\e[3;37m" << this->name
+              << "\e[;32m) default constructor called\e[0m" << std::endl;
+    this->guarding = 0;
+    this->hp = 100;
+    this->maxHp = this->hp;
+    this->energy = 50;
+    this->dmg = 20;
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     std::cout << "\e[32mScavTrap (\e[3;37m" << this->name
               << "\e[;32m) constructor called\e[0m" << std::endl;
