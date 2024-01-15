@@ -13,9 +13,8 @@ int main() {
     printAction("Creating a copy of DiamondTrap");
     DiamondTrap diamondTrapCopy(diamondTrap);
 
-    // HP (100) from FragTrap
-    // Energy (50) from ScavTrap
-    // Damage (30) from FragTrap
+    printAction("Creating a default DiamondTrap");
+    DiamondTrap diamondTrapDefault;
 
     printAction(
         "Making " + diamondTrap.getName() + " attack " + clapTrap.getName());
