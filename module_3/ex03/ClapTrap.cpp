@@ -1,5 +1,11 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : name("ClapTrap"), hp(10), energy(10), dmg(0) {
+    this->maxHp = this->hp;
+    std::cout << "\e[32mClapTrap (\e[3;37m" << this->name
+              << "\e[;32m) default constructor called\e[0m" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) : name(name), hp(10), energy(10), dmg(0) {
     this->maxHp = this->hp;
     std::cout << "\e[32mClapTrap (\e[3;37m" << this->name
@@ -22,6 +28,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other) {
               << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
+    this->maxHp = this->hp;
     this->energy = other.energy;
     this->dmg = other.dmg;
     return *this;
@@ -58,9 +65,9 @@ void ClapTrap::takeDamage(unsigned int amount) {
 void ClapTrap::beRepaired(unsigned int amount) {
     if (!checkAlive(*this) || !checkEnergy(*this)) return;
     std::string repairStatus;
-    if (amount + hp > maxHp) {
+    if (amount + this->hp >= this->maxHp) {
         repairStatus = "fully repaired";
-        amount = maxHp - hp;
+        amount = this->maxHp - this->hp;
     } else
         repairStatus = "repaired";
     this->hp += amount;
