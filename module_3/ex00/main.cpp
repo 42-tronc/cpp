@@ -5,7 +5,8 @@ void printAction(std::string str) {
 }
 
 int main() {
-    printAction("Create two ClapTrap objects");
+    printAction("Create 3 ClapTrap objects");
+    ClapTrap clapTrap;
     ClapTrap thomas("Thomas Jefferson");
     ClapTrap george("George Washington");
 
