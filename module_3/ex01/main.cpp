@@ -5,10 +5,11 @@ void printAction(const std::string& str) {
 }
 
 int main() {
-    printAction("Creating 2 ScavTrap objects and 1 ClapTrap object");
+    printAction("Creating 2 ScavTrap objects and 2 ClapTrap object");
     ScavTrap john("John");
     ScavTrap rudolf("Rudolf");
-    ClapTrap clapTrap("ClapTrap");
+    ClapTrap clapTrap("Clapi");
+    ClapTrap clapTrap2;
 
     printAction("Creating a copy of ScavTrap object");
     ScavTrap copyCat(john);
@@ -20,7 +21,7 @@ int main() {
     john.attack(rudolf.getName());
     rudolf.takeDamage(john.getDmg());
 
-    printAction("ClapTrap attacks " + rudolf.getName());
+    printAction("Clapi attacks " + rudolf.getName());
     for (int i = 0; i < 6; i++) {
         clapTrap.attack(rudolf.getName());
         rudolf.takeDamage(clapTrap.getDmg());
