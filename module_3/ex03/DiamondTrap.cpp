@@ -5,7 +5,7 @@ DiamondTrap::DiamondTrap() : ClapTrap(), FragTrap(), ScavTrap() {
     this->hp = FragTrap::hp;
     this->maxHp = this->hp;
     this->energy = ScavTrap::energy;
-    this->dmg = FragTrap::dmg;
+    this->dmg = 30;  // FragTrap::dmg;
     std::cout << "\e[32mDiamondTrap (\e[3;37m" << this->name
               << "\e[;32m) constructor called\e[0m" << std::endl;
 }
@@ -18,7 +18,7 @@ DiamondTrap::DiamondTrap(std::string name)
     this->hp = FragTrap::hp;
     this->maxHp = this->hp;
     this->energy = ScavTrap::energy;
-    this->dmg = FragTrap::dmg;
+    this->dmg = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
@@ -37,9 +37,10 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
     std::cout << "\e[33mDiamondTrap (\e[3;37m" << other.getName()
               << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
-    this->dmg = other.dmg;
-    this->energy = other.energy;
     this->hp = other.hp;
+    this->maxHp = other.maxHp;
+    this->energy = other.energy;
+    this->dmg = other.dmg;
     return *this;
 }
 
