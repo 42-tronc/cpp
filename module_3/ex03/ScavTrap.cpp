@@ -35,10 +35,11 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
     std::cout << "\e[33mScavTrap (\e[3;37m" << other.getName()
               << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
+    this->guarding = other.guarding;
     this->hp = other.hp;
+    this->maxHp = other.maxHp;
     this->energy = other.energy;
     this->dmg = other.dmg;
-    this->guarding = other.guarding;
     return *this;
 }
 
