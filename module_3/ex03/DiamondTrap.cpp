@@ -1,7 +1,8 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap(), FragTrap(), ScavTrap() {
+DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap() {
     this->name = "DiamondTrap";
+    ClapTrap::name = this->name + "_clap_name";
     this->hp = FragTrap::hp;
     this->maxHp = this->hp;
     this->energy = ScavTrap::energy;
