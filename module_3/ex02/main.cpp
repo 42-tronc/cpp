@@ -7,11 +7,11 @@ void printAction(const std::string& str) {
 
 int main() {
     printAction(
-        "Creating a FragTrap object, a ScavTrap object and a ClapTrap object");
+        "Creating 2 FragTrap objects, a ScavTrap object and a ClapTrap object");
     FragTrap john("John");
+    FragTrap fragTrap;
     ScavTrap rudolf("Rudolf");
     ClapTrap clapTrap("ClapTrap");
-    FragTrap fragTrap;
 
     printAction("Creating a copy of FragTrap object");
     FragTrap copyCat(john);
