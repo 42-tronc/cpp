@@ -23,9 +23,9 @@ DiamondTrap::DiamondTrap(std::string name)
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
     : ClapTrap(other), FragTrap(other), ScavTrap(other) {
-    std::cout << "\e[33mDiamondTrap (\e[3;37m" << other.getName()
-              << "\e[;33m) copy constructor called\e[0m" << std::endl;
     *this = other;
+    std::cout << "\e[33mDiamondTrap (\e[3;37m" << name
+              << "\e[;33m) copy constructor called\e[0m" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
@@ -34,13 +34,13 @@ DiamondTrap::~DiamondTrap() {
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
-    std::cout << "\e[33mDiamondTrap (\e[3;37m" << other.getName()
-              << "\e[;33m) assignation operator called\e[0m" << std::endl;
     this->name = other.name;
     this->hp = other.hp;
     this->maxHp = other.maxHp;
     this->energy = other.energy;
     this->dmg = other.dmg;
+    std::cout << "\e[33mDiamondTrap (\e[3;37m" << name
+              << "\e[;33m) assignation operator called\e[0m" << std::endl;
     return *this;
 }
 
