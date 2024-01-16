@@ -68,8 +68,8 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 # --------- PROJECT VARIABLES ---------
 NAME := animal
-HEADER := Animal.hpp Cat.hpp Dog.hpp
-SRC := main.cpp Animal.cpp Cat.cpp Dog.cpp
+HEADER := Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+SRC := main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 # -------------- RECIPES --------------
 all: $(NAME) | $(OBJ_DIR)
