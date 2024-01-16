@@ -23,10 +23,6 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
     std::cout << "\e[33mScavTrap (\e[3;37m" << other.getName()
               << "\e[;33m) copy constructor called\e[0m" << std::endl;
-    // this->name = other.name;
-    // this->hp = other.hp;
-    // this->energy = other.energy;
-    // this->dmg = other.dmg;
     *this = other;
 }
 
