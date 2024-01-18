@@ -1,8 +1,10 @@
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("cure") {}
+Cure::Cure() : AMateria() {
+    this->type = "cure";
+}
 
-Cure::Cure(const Cure& other) {
+Cure::Cure(const Cure& other) : AMateria(other) {
     *this = other;
 }
 
@@ -19,5 +21,5 @@ AMateria* Cure::clone() const {
 
 void Cure::use(ICharacter& target) {
     std::cout << "\e[32m* heals \e[3;37m" << target.getName()
-              << "\e[;32m wounds *\e[0m" << std::endl;
+              << "\e[;32m's wounds *\e[0m" << std::endl;
 }
