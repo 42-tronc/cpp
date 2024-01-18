@@ -56,7 +56,7 @@ RESET		:= \033[0m
 CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
-VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes --track-origins=yes
 
 RM := rm -rf
 USER := $(shell whoami)
@@ -68,8 +68,8 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 # --------- PROJECT VARIABLES ---------
 NAME := amateria
-HEADER := AMateria.hpp
-SRC := main.cpp AMateria.cpp
+HEADER := AMateria.hpp ICharacter.hpp Character.hpp Cure.hpp Ice.hpp MateriaSource.hpp IMateriaSource.hpp
+SRC := main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 # -------------- RECIPES --------------
 all: $(NAME) | $(OBJ_DIR)

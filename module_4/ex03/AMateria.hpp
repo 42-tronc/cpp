@@ -20,7 +20,7 @@ public:
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
 
-protected:  // we want derived classes to be able to access this member.
+protected:
     std::string type;
 };
 
