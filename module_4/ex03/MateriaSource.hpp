@@ -16,7 +16,6 @@ public:
 
 private:
     AMateria* memory[4];
-    int count;
 };
 
 #endif

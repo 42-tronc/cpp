@@ -1,6 +1,6 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource() : count(0) {
+MateriaSource::MateriaSource() {
     for (int i = 0; i < 4; i++) memory[i] = NULL;
 }
 
@@ -39,14 +39,21 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
-    if (count < 4) {
-        memory[count] = materia;
-        count++;
+    if (!materia) {
+        std::cout << "MateriaSource: materia is NULL" << std::endl;
+        return;
     }
+    for (int i = 0; i < 4; i++)
+        if (!memory[i]) {
+            memory[i] = materia;
+            return;
+        }
+    std::cout << "MateriaSource: memory is full" << std::endl;
+    delete materia;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < 4; i++)
         if (memory[i]->getType() == type) return memory[i]->clone();
     return NULL;
 }
