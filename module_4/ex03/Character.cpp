@@ -4,14 +4,12 @@ Character::Character() : name("Character") {
     std::cout << "\e[3;37m" << name << "\e[32m was born 󰹼 󰼹\n";
     for (int i = 0; i < 4; i++) inventory[i] = NULL;
     floor = NULL;
-    // for (int i = 0; i < 4; i++) floor[i] = NULL;
 }
 
 Character::Character(const std::string name) : name(name) {
     std::cout << "\e[3;37m" << name << "\e[32m was born 󰹼 󰼹\n";
     for (int i = 0; i < 4; i++) inventory[i] = NULL;
     floor = NULL;
-    // for (int i = 0; i < 4; i++) this->floor[i] = NULL;
 }
 
 Character::Character(const Character& other) {
@@ -22,8 +20,6 @@ Character::~Character() {
     std::cout << "\e[3;37m" << name << "\e[31m died\e[0m" << std::endl;
     for (int i = 0; i < 4; i++)
         if (inventory[i]) delete inventory[i];
-    // for (int i = 0; i < 4; i++)
-    //     if (this->floor[i]) delete this->floor[i];
     if (floor) delete floor;
 }
 

@@ -8,120 +8,71 @@ void printAction(const std::string& str) {
 }
 
 int main(void) {
-    // printAction("Using the subject's main");
-    // {
-    //     IMateriaSource* src = new MateriaSource();
-    //     src->learnMateria(new Ice());
-    //     src->learnMateria(new Cure());
+    printAction("Using the subject's main");
+    IMateriaSource* materia = new MateriaSource();
 
-    //     std::cout << std::endl;
+    materia->learnMateria(new Ice());
+    materia->learnMateria(new Cure());
 
-    //     ICharacter* me = new Character("me");
-    //     AMateria* tmp;
-    //     tmp = src->createMateria("ice");
-    //     me->equip(tmp);
-    //     tmp = src->createMateria("cure");
-    //     me->equip(tmp);
+    ICharacter* me = new Character("me");
 
-    //     std::cout << std::endl;
-
-    //     ICharacter* bob = new Character("bob");
-    //     me->use(0, *bob);
-    //     me->use(1, *bob);
-
-    //     delete bob;
-    //     delete me;
-    //     delete src;
-    // }
-
-    printAction("modzie");
-    MateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Cure());
-
-    std::cout << std::endl;
-
-    Character* me = new Character("me");
     AMateria* tmp;
-    tmp = src->createMateria("ice");
+    tmp = materia->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("fuyfyufyiu");
+    tmp = materia->createMateria("cure");
     me->equip(tmp);
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-
-    std::cout << std::endl;
 
     ICharacter* bob = new Character("bob");
-    me->unequip(0);
-    me->unequip(0);
-    me->unequip(5);
-    for (int i = -1; i < 4; i++) me->use(i, *bob);
-    tmp = src->createMateria("cure");
-    for (int i = 0; i < 5; i++) me->equip(tmp);
+
     me->use(0, *bob);
+    me->use(1, *bob);
 
     delete bob;
     delete me;
+    delete materia;
+
+    printAction("Creating a MateriaSource");
+    MateriaSource* src = new MateriaSource();
+
+    printAction("Creating Materias");
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    src->learnMateria(new Cure());
+
+    printAction("Creating a Character");
+    Character* john = new Character("john");
+
+    printAction("Equipping the Character with Materias");
+    AMateria* spell;
+    spell = src->createMateria("ice");
+    john->equip(spell);
+    spell = src->createMateria("fuyfyufyiu");
+    john->equip(spell);
+    spell = src->createMateria("ice");
+    john->equip(spell);
+    spell = src->createMateria("cure");
+    john->equip(spell);
+    spell = src->createMateria("ice");
+    john->equip(spell);
+    spell = src->createMateria("cure");
+    john->equip(spell);
+
+    ICharacter* mosh = new Character("mosh");
+    john->unequip(0);
+    john->unequip(0);
+    john->unequip(5);
+    for (int i = -1; i < 4; i++) john->use(i, *mosh);
+    spell = src->createMateria("cure");
+    for (int i = 0; i < 5; i++) john->equip(spell);
+    john->use(0, *mosh);
+
+    delete mosh;
+    delete john;
     delete src;
 
-    // printAction("Creating a MateriaSource");
-    // IMateriaSource* src = new MateriaSource();
-
-    // printAction("Creating a Character");
-    // ICharacter* me = new Character("John");
-
-    // printAction("Equipping the Character with an Ice Materia");
-    // AMateria* ice = new Ice();
-    // src->learnMateria(ice);
-    // me->equip(ice);
-
-    // printAction("Equipping the Character with a Cure Materia");
-    // AMateria* cure = new Cure();
-    // src->learnMateria(cure);
-    // me->equip(cure);
-
-    // printAction("Creating another Character");
-    // ICharacter* bob = new Character("Bob");
-
-    // printAction("Using the Ice Materia on Bob");
-    // me->use(0, *bob);
-
-    // printAction("Using the Cure Materia on Bob");
-    // me->use(1, *bob);
-
-    // printAction("Unequipping the already used Ice Materia");
-    // me->unequip(0);
-
-    // printAction("Creating multiple Materia");
-    // AMateria* tmp;
-    // tmp = src->createMateria("ice");
-    // me->equip(tmp);
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
-    // tmp = src->createMateria("fire");
-    // me->equip(tmp);
-    // tmp = src->createMateria("water");
-    // me->equip(tmp);
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
-
-    // printAction("Using the Ice Materia on Bob");
-    // // me->use(0, *bob);
-
-    // printAction("Exiting the program");
-    // // delete bob;
-    // delete me;
-    // delete src;
+    printAction("Exiting the program");
 
     return 0;
 }

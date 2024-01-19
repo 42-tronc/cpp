@@ -18,12 +18,6 @@ MateriaSource::~MateriaSource() {
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
     if (this != &other) {
-        //     for (int i = 0; i < count; i++) delete memory[i];
-
-        //     count = other.count;
-        //     for (int i = 0; i < count; i++) memory[i] =
-        //     other.memory[i]->clone();
-        // }
         for (int i = 0; i < 4; i++) {
             if (this->memory[i]) {
                 delete this->memory[i];
