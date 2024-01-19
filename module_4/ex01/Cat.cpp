@@ -9,6 +9,7 @@ Cat::Cat() : Animal() {
 Cat::Cat(const Cat& other) : Animal() {
     std::cout << "\e[33m󰄛 Cat\e[0m copy constructor called\n";
     this->brain = new Brain();
+    *this->brain = *other.brain;
     *this = other;
 }
 
@@ -19,7 +20,6 @@ Cat::~Cat() {
 
 Cat& Cat::operator=(const Cat& other) {
     std::cout << "\e[33m󰄛 Cat\e[0m assignation operator called\n";
-    // Animal::operator=(other);
     this->type = other.type;
     *this->brain = *other.brain;
     return *this;
