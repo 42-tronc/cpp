@@ -92,13 +92,22 @@ void Form::beSigned(const Bureaucrat &bureaucrat) {
         if (bureaucrat.getGrade() > gradeToSign)
             throw Form::GradeTooLowException();
         isSigned = true;
-        std::cout << "\e[1;33m" << bureaucrat.getName()
+        std::cout << "\e[1;37m" << bureaucrat.getName()
                   << "\e[0m signed the form \e[1;33m" << name << "\e[0m"
                   << std::endl;
     } catch (const Form::GradeTooLowException &ex) {
-        std::cerr << "\e[1;31m[ERROR] \e[;3;30m" << ex.what()
-                  << "\e[0m: \e[1;33m" << bureaucrat.getName()
-                  << "\e[0m cannot sign the form \e[1;33m" << name << "\e[0m"
-                  << std::endl;
+        std::cerr << "\e[1;37m" << bureaucrat.getName()
+                  << "\e[0m cannot sign the form \e[1;33m" << name
+                  << "\e[0m(\e[1;31m" << bureaucrat.getGrade() << "\e[0m/"
+                  << gradeToSign << ")" << std::endl;
     }
+}
+
+std::ostream &operator<<(std::ostream &stream, const Form &form) {
+    stream << "\e[1;36m" << form.getName() << "\e[0m form is "
+           << (form.getIsSigned() ? "\e[1;32m" : "\e[1;31mnot ")
+           << "signed\e[0m (Sign: \e[1;33m" << form.getGradeToSign()
+           << "\e[0m, Execute: \e[1;33m" << form.getGradeToExecute()
+           << "\e[0m)";
+    return stream;
 }

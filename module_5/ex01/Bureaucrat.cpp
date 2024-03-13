@@ -88,7 +88,9 @@ void Bureaucrat::decrementGrade() {
                   << std::endl;
 }
 
-void Bureaucrat::signForm(Form& form) {}
+void Bureaucrat::signForm(Form& form) {
+    form.beSigned(*this);
+}
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat) {
     std::cout << "\e[1;37m" << bureaucrat.getName() << "\e[0m has a grade of "

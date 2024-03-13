@@ -24,44 +24,35 @@ int main() {
     printAction("Create a Form with a grade to execute too low");
     Form execTooLow("Grade Execute Too Low", 100, 151);
 
-    // printAction("Creating a Form with a grade too high");
-    // Form tooHigh("TooHigh", 0, 100);
+    printAction(
+        "Create a Bureaucrat with just enough grade to sign and execute Fake "
+        "Passport");
+    Bureaucrat michel("Michel", 100);
 
-    // printAction("Creating a Form with a grade too low");
-    // Form tooLow("TooLow", 100, 151);
+    printAction(
+        "Create a Bureaucrat with a grade too low to sign Fake Passport");
+    Bureaucrat albert("Albert", 101);
 
-    // printAction("Creating a Bureaucrat with a grade too high");
-    // Bureaucrat tooHigh("TooHigh", 0);
+    printAction(
+        "Create a Bureaucrat with a grade way higher than needed to sign Fake "
+        "Passport");
+    Bureaucrat jean("Jean", 50);
 
-    // printAction("Creating a Bureaucrat with a grade too low");
-    // Bureaucrat tooLow("TooLow", 151);
+    printAction("Copying the Fake Passport form");
+    Form fakePassportCopy(fakePassport);
 
-    // printAction("Creating a Bureaucrat with a valid grade");
-    // Bureaucrat haulande("Francois Haulande", 100);
+    printAction("Print Michel and the Fake Passport");
+    std::cout << michel << "\n" << fakePassport << std::endl;
 
-    // printAction("Increment the grade of a Bureaucrat");
-    // haulande.incrementGrade();
+    printAction("Michel tries to sign the Fake Passport");
+    michel.signForm(fakePassport);
+    std::cout << fakePassport << std::endl;
 
-    // printAction("Creating a new Bureaucrat and decrementing its grade");
-    // Bureaucrat macaron("Emmanuel Macaron", 149);
-    // macaron.decrementGrade();
+    printAction("Albert tries to sign the Fake Passport");
+    albert.signForm(fakePassport);
 
-    // printAction("Decreasing the grade of a Bureaucrat with a grade too low");
-    // macaron.decrementGrade();
-
-    // printAction("Creating a copy of a Bureaucrat");
-    // Bureaucrat copy(macaron);
-
-    // printAction("Creating a copy with the assignment operator");
-    // Bureaucrat copy2 = haulande;
-
-    // printAction("Using the operator<< to print all the Bureaucrats");
-    // std::cout << tooHigh << "\n"
-    //           << tooLow << "\n"
-    //           << haulande << "\n"
-    //           << macaron << "\n"
-    //           << copy << "\n"
-    //           << copy2 << std::endl;
+    printAction("Jean tries to sign the Fake Passport");
+    jean.signForm(fakePassport);
 
     printAction("Exiting the program");
 

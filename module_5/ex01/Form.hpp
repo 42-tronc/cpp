@@ -5,6 +5,9 @@
 
 #include "Bureaucrat.hpp"
 
+// Forward declaration of Bureaucrat
+class Bureaucrat;
+
 class Form {
 public:
     Form();
