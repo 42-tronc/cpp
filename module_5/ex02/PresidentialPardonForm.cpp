@@ -2,32 +2,22 @@
 
 PresidentialPardonForm::PresidentialPardonForm()
     : AForm("PresidentialPardonForm", 25, 5) {
-    std::cout << "\e[32m� PresidentialPardonForm (\e[3;37m" << getName()
-              << "\e[;32m) was created with grade to sign \e[1;33m"
-              << getGradeToSign() << "\e[;32m and grade to execute \e[1;33m"
-              << getGradeToExecute() << "\e[0m" << std::endl;
+    debugPrint();
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target)
     : AForm("PresidentialPardonForm", 25, 5), target(target) {
-    std::cout << "\e[32m� PresidentialPardonForm (\e[3;37m" << getName()
-              << "\e[;32m) was created with grade to sign \e[1;33m"
-              << getGradeToSign() << "\e[;32m and grade to execute \e[1;33m"
-              << getGradeToExecute() << "\e[0m" << std::endl;
+    debugPrint();
 }
 
 PresidentialPardonForm::PresidentialPardonForm(
     const PresidentialPardonForm& other)
     : AForm(other), target(other.target) {
-    std::cout << "\e[32m� PresidentialPardonForm (\e[3;37m" << getName()
-              << "\e[;32m) was created with grade to sign \e[1;33m"
-              << getGradeToSign() << "\e[;32m and grade to execute \e[1;33m"
-              << getGradeToExecute() << "\e[0m" << std::endl;
+    debugPrint();
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-    std::cout << "\e[31m󱪠 PresidentialPardonForm (\e[3;37m" << getName()
-              << "\e[;31m) was destroyed\e[0m" << std::endl;
+    debugPrint(false);
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(

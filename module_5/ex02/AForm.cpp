@@ -124,19 +124,14 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
 }
 
 void AForm::debugPrint(bool creation) const {
-    // std::string color_code = creation ? "\e[32m" : "\e[31m";
-    // std::string action = creation ? "created" : "destroyed";
-    // std::string icon = creation ? "󱪝" : "󱪠";
-
-    if (creation) {
+    if (creation)
         std::cout << "\e[32m󱪝 Form (\e[3;37m" << name
                   << "\e[;32m) was created with grade to sign \e[1;33m"
                   << gradeToSign << "\e[;32m and grade to execute \e[1;33m"
                   << gradeToExecute << "\e[0m" << std::endl;
-    } else {
-        std::cout << "\e[31m󱪠 AForm (\e[3;37m" << name
+    else
+        std::cout << "\e[31m󱪠 Form (\e[3;37m" << name
                   << "\e[;31m) was destroyed\e[0m" << std::endl;
-    }
 }
 
 std::ostream &operator<<(std::ostream &stream, const AForm &AForm) {
