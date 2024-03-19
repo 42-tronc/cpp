@@ -48,10 +48,10 @@ int main() {
     michel.signForm(fakePassport);
     std::cout << fakePassport << std::endl;
 
-    printAction("Albert tries to sign the Fake Passport");
-    albert.signForm(fakePassport);
+    printAction("Albert tries to sign the other Fake Passport");
+    albert.signForm(fakePassportCopy);
 
-    printAction("Jean tries to sign the Fake Passport");
+    printAction("Jean tries to sign the already signed Fake Passport");
     jean.signForm(fakePassport);
 
     printAction("Exiting the program");

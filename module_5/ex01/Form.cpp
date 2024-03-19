@@ -89,7 +89,9 @@ short Form::checkGrade(short grade) {
 
 void Form::beSigned(const Bureaucrat &bureaucrat) {
     try {
-        if (bureaucrat.getGrade() > gradeToSign)
+        if (isSigned)
+            throw Form::AlreadySignedException();
+        else if (bureaucrat.getGrade() > gradeToSign)
             throw Form::GradeTooLowException();
         isSigned = true;
         std::cout << "\e[1;37m" << bureaucrat.getName()
@@ -100,6 +102,9 @@ void Form::beSigned(const Bureaucrat &bureaucrat) {
                   << "\e[0m cannot sign the form \e[1;33m" << name
                   << "\e[0m(\e[1;31m" << bureaucrat.getGrade() << "\e[0m/"
                   << gradeToSign << ")" << std::endl;
+    } catch (const Form::AlreadySignedException &ex) {
+        std::cerr << "\e[1;33m" << name << "\e[0m is already signed"
+                  << std::endl;
     }
 }
 
