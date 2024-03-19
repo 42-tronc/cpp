@@ -1,5 +1,5 @@
-#ifndef AForm_H
-#define AForm_H
+#ifndef AForm_HPP
+#define AForm_HPPPP
 
 #include <iostream>
 

@@ -1,5 +1,5 @@
-#ifndef ROBOTOMYREQUESTFORM_H
-#define ROBOTOMYREQUESTFORM_H
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPPPP
 
 #include <cstdlib>  // std::rand
 #include <ctime>  // std::time
