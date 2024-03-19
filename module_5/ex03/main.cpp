@@ -1,78 +1,160 @@
-#include "Bureaucrat.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
-void printAction(const std::string& str) {
+void printAction(const std::string &str) {
     std::cout << "\n\e[1;33m* \e[21m\e[34m" << str << "\e[0m\n\n";
 }
 
 int main() {
-    printAction("Create a Bureaucrat with a grade of 1");
-    Bureaucrat john("John", 1);
+    // printAction("Create an Intern");
+    // Intern intern;
+    // AForm* shrub;
+    // AForm* robot;
+    // AForm* pres;
 
-    printAction("Create a Bureaucrat with a grade of 150");
-    Bureaucrat jane("Jane", 150);
+    // printAction("Create a Shrubbery Creation AForm");
+    // shrub = intern.makeForm("shrubbery creation", "home");
 
-    printAction("Create a Bureaucrat with a grade of 72");
-    Bureaucrat jill("Jill", 72);
+    // printAction("Create a Robotomy Request AForm");
+    // robot = intern.makeForm("robotomy request", "home");
 
-    printAction("Create a Bureaucrat with a grade of 45");
-    Bureaucrat jack("Jack", 45);
+    // printAction("Create a Presidential Pardon AForm");
+    // pres = intern.makeForm("presidential pardon", "home");
 
-    /* SHRUBBERY CREATION FORM */
-    printAction("Create the default ShrubberyCreationForm");
-    ShrubberyCreationForm defaultShrubberyCreationForm;
-    std::cout << defaultShrubberyCreationForm << std::endl;
+    // printAction("Delete the forms");
+    // delete shrub;
+    // delete robot;
+    // delete pres;
 
-    printAction("Try to execute the default ShrubberyCreationForm with John");
-    std::cout << john << std::endl;
-    defaultShrubberyCreationForm.execute(john);
+    /* std::cout << std::endl
+              << std::endl
+              << "\033[1m\033[32m"
+              << "TESTS EX03 - Testing Intern"
+              << "\033[0m" << std::endl;
+    std::string name = "invalid name";
+    printAction("Creating intern");
+    Intern someRandomIntern;
 
-    printAction("Try to sign the default ShrubberyCreationForm with John");
-    std::cout << john << std::endl;
-    defaultShrubberyCreationForm.beSigned(john);
+    printAction("Using intern to create AForm, invalid name");
+    AForm* invalidForm = someRandomIntern.makeForm("invalid name", "Target");
 
-    printAction("Try to execute the default ShrubberyCreationForm with Jane");
-    std::cout << jane << std::endl << defaultShrubberyCreationForm << std::endl;
-    defaultShrubberyCreationForm.execute(jane);
+    printAction("Displaying form stats");
+    std::cout << invalidForm << std::endl;
 
-    printAction("Try to execute the default ShrubberyCreationForm with Jill");
-    std::cout << jill << std::endl;
-    defaultShrubberyCreationForm.execute(jill);
+    printAction("Using intern to create AForm, Shrubbery");
+    AForm* shrubberyForm =
+        someRandomIntern.makeForm("shrubbery creation", "Target");
 
-    printAction("Create a ShrubberyCreationForm with a target");
-    ShrubberyCreationForm shrubberyCreationForm("Blue");
+    printAction("Displaying Shrubbery stats");
+    std::cout << *shrubberyForm << std::endl;
 
-    printAction("Sign and execute the ShrubberyCreationForm with John");
-    shrubberyCreationForm.beSigned(john);
-    shrubberyCreationForm.execute(john);
+    printAction("Using intern to create AForm, Robotomy");
+    AForm* robotomyForm =
+        someRandomIntern.makeForm("robotomy request", "Target");
 
-    /* ROBOTOMY REQUEST FORM */
-    printAction("Create a RobotomyRequestForm with a target");
-    RobotomyRequestForm robotomyRequestForm("Julie");
+    printAction("Displaying Robotomy stats");
+    std::cout << *robotomyForm << std::endl;
 
-    printAction("Execute the RobotomyRequestForm with Jack");
-    robotomyRequestForm.execute(jack);
+    printAction("Using intern to create AForm, Presidential");
+    AForm* presidentialForm =
+        someRandomIntern.makeForm("presidential pardon", "Target");
 
-    printAction("Sign and execute the RobotomyRequestForm with Jill");
-    robotomyRequestForm.beSigned(jill);
-    robotomyRequestForm.execute(jill);
+    printAction("Displaying Presidential stats");
+    std::cout << *presidentialForm << std::endl;
 
-    printAction("Execute the RobotomyRequestForm with Jack");
-    robotomyRequestForm.execute(jack);
+    printAction("Creating Bureaucrat");
+    Bureaucrat memberLow("MemberLow", 150);
+    Bureaucrat memberHigh("MemberHigh", 1);
 
-    /* PRESIDENTIAL PARDON FORM */
-    printAction("Create a PresidentialPardonForm with a target");
-    PresidentialPardonForm presidentialPardonForm("Jackson");
+    printAction("memberLow trying to sign all form");
+    memberLow.executeAForm(*shrubberyForm);
+    memberLow.executeAForm(*robotomyForm);
+    memberLow.executeAForm(*presidentialForm);
 
-    printAction("Sign and execute the PresidentialPardonForm with Jack");
-    jack.signAForm(presidentialPardonForm);
-    jack.executeAForm(presidentialPardonForm);
+    printAction("memberHigh signing all form");
+    memberHigh.signAForm(*shrubberyForm);
+    memberHigh.signAForm(*robotomyForm);
+    memberHigh.signAForm(*presidentialForm);
 
-    printAction("Sign and execute the PresidentialPardonForm with John");
-    john.signAForm(presidentialPardonForm);
-    john.executeAForm(presidentialPardonForm);
+    printAction("memberLow trying to sign again");
+    memberLow.executeAForm(*shrubberyForm);
+    memberLow.executeAForm(*robotomyForm);
+    memberLow.executeAForm(*presidentialForm);
+
+    printAction("memberHigh execute shrubberyForm");
+    memberHigh.executeAForm(*shrubberyForm);
+
+    printAction("memberHigh execute robotomyForm");
+    memberHigh.executeAForm(*robotomyForm);
+
+    printAction("memberHigh execute presidentialForm");
+    memberHigh.executeAForm(*presidentialForm);
+
+    printAction("Deleting all");
+    delete invalidForm;
+    delete shrubberyForm;
+    delete robotomyForm;
+    delete presidentialForm */
+    ;
+
+    Intern slave;
+    AForm *scf;
+    AForm *rrf;
+    AForm *ppf;
+
+    try {
+        scf = slave.makeForm("shrubbery creation", "Forest");
+        rrf = slave.makeForm("robotomy request", "Bender");
+        ppf = slave.makeForm("presidential pardon", "PresPard");
+        // AForm *wrong;
+        // wrong = slave.makeForm("Shrubbery creation", "Dedge");
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        delete scf;
+        delete rrf;
+        delete ppf;
+        return 1;
+    }
+
+    {
+        printAction("RobotoMyRequestForm");
+        Bureaucrat thomas("Thomas", 5);
+        thomas.signAForm(*scf);
+        thomas.executeAForm(*scf);
+        Bureaucrat mehdi("Mehdi", 145);
+        mehdi.signAForm(*scf);
+        mehdi.executeAForm(*scf);
+        Bureaucrat clement("Clement", 150);
+        clement.signAForm(*scf);
+        clement.executeAForm(*scf);
+    }
+    {
+        printAction("ShrubberyCreationForm");
+        Bureaucrat thomas("Thomas", 5);
+        thomas.signAForm(*rrf);
+        thomas.executeAForm(*rrf);
+        Bureaucrat mehdi("Mehdi", 72);
+        mehdi.signAForm(*rrf);
+        mehdi.executeAForm(*rrf);
+        Bureaucrat clement("Clement", 150);
+        clement.signAForm(*rrf);
+        clement.executeAForm(*rrf);
+    }
+    {
+        printAction("PresidentialPardonForm");
+        Bureaucrat thomas("Thomas", 5);
+        thomas.signAForm(*ppf);
+        thomas.executeAForm(*ppf);
+        Bureaucrat mehdi("Mehdi", 25);
+        mehdi.signAForm(*ppf);
+        mehdi.executeAForm(*ppf);
+        Bureaucrat clement("Clement", 150);
+        clement.signAForm(*ppf);
+        clement.executeAForm(*ppf);
+    }
+
+    delete scf;
+    delete rrf;
+    delete ppf;
 
     printAction("Exiting the program");
 
