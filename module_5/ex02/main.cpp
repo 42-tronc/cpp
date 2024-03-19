@@ -14,62 +14,65 @@ int main() {
     printAction("Create a Bureaucrat with a grade of 150");
     Bureaucrat jane("Jane", 150);
 
+    printAction("Create a Bureaucrat with a grade of 72");
+    Bureaucrat jill("Jill", 72);
+
+    printAction("Create a Bureaucrat with a grade of 45");
+    Bureaucrat jack("Jack", 45);
+
+    /* SHRUBBERY CREATION FORM */
     printAction("Create the default ShrubberyCreationForm");
     ShrubberyCreationForm defaultShrubberyCreationForm;
     std::cout << defaultShrubberyCreationForm << std::endl;
 
-    // printAction("Try to sign with a bureaucrat with a grade of 150");
-    // defaultShrubberyCreationForm.beSigned(jane);
-    // std::cout << defaultShrubberyCreationForm << std::endl;
+    printAction("Try to execute the default ShrubberyCreationForm with John");
+    std::cout << john << std::endl;
+    defaultShrubberyCreationForm.execute(john);
 
-    // printAction("Create a ShrubberyCreationForm with a target");
-    // ShrubberyCreationForm shrubberyCreationForm("Blue");
+    printAction("Try to sign the default ShrubberyCreationForm with John");
+    std::cout << john << std::endl;
+    defaultShrubberyCreationForm.beSigned(john);
 
-    // printAction(
-    //     "Execute the default ShrubberyCreationForm with the bureaucrat "
-    //     "with a grade of 1");
-    // defaultShrubberyCreationForm.execute(john);
+    printAction("Try to execute the default ShrubberyCreationForm with Jane");
+    std::cout << jane << std::endl << defaultShrubberyCreationForm << std::endl;
+    defaultShrubberyCreationForm.execute(jane);
 
-    // printAction(
-    //     "Execute the default ShrubberyCreationForm with the bureaucrat with a
-    //     " "grade of 150");
-    // defaultShrubberyCreationForm.execute(jane);
+    printAction("Try to execute the default ShrubberyCreationForm with Jill");
+    std::cout << jill << std::endl;
+    defaultShrubberyCreationForm.execute(jill);
 
-    // printAction(
-    //     "Execute the ShrubberyCreationForm with a target with the "
-    //     "bureaucrat with a grade of 1");
-    // shrubberyCreationForm.execute(john);
+    printAction("Create a ShrubberyCreationForm with a target");
+    ShrubberyCreationForm shrubberyCreationForm("Blue");
 
-    // printAction(
-    //     "Execute the ShrubberyCreationForm with a target with the "
-    //     "bureaucrat with a grade of 150");
-    // shrubberyCreationForm.execute(jane);
+    printAction("Sign and execute the ShrubberyCreationForm with John");
+    shrubberyCreationForm.beSigned(john);
+    shrubberyCreationForm.execute(john);
 
-    // printAction("Create a RobotomyRequestForm with a target");
-    // RobotomyRequestForm robotomyRequestForm("Julie");
+    /* ROBOTOMY REQUEST FORM */
+    printAction("Create a RobotomyRequestForm with a target");
+    RobotomyRequestForm robotomyRequestForm("Julie");
 
-    // printAction(
-    //     "Execute the RobotomyRequestForm with a target with the "
-    //     "bureaucrat with a grade of 1");
-    // robotomyRequestForm.execute(john);
+    printAction("Execute the RobotomyRequestForm with Jack");
+    robotomyRequestForm.execute(jack);
 
-    // printAction(
-    //     "Execute the RobotomyRequestForm with a target with the "
-    //     "bureaucrat with a grade of 150");
-    // robotomyRequestForm.execute(jane);
+    printAction("Sign and execute the RobotomyRequestForm with Jill");
+    robotomyRequestForm.beSigned(jill);
+    robotomyRequestForm.execute(jill);
 
-    // printAction("Create a PresidentialPardonForm with a target");
-    // PresidentialPardonForm presidentialPardonForm("Jackson");
+    printAction("Execute the RobotomyRequestForm with Jack");
+    robotomyRequestForm.execute(jack);
 
-    // printAction(
-    //     "Execute the PresidentialPardonForm with a target with the "
-    //     "bureaucrat with a grade of 1");
-    // presidentialPardonForm.execute(john);
+    /* PRESIDENTIAL PARDON FORM */
+    printAction("Create a PresidentialPardonForm with a target");
+    PresidentialPardonForm presidentialPardonForm("Jackson");
 
-    // printAction(
-    //     "Execute the PresidentialPardonForm with a target with the "
-    //     "bureaucrat with a grade of 150");
-    // presidentialPardonForm.execute(jane);
+    printAction("Sign and execute the PresidentialPardonForm with Jack");
+    jack.signAForm(presidentialPardonForm);
+    jack.executeAForm(presidentialPardonForm);
+
+    printAction("Sign and execute the PresidentialPardonForm with John");
+    john.signAForm(presidentialPardonForm);
+    john.executeAForm(presidentialPardonForm);
 
     printAction("Exiting the program");
 

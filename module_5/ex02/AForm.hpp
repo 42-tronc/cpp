@@ -51,10 +51,10 @@ public:
         }
     };
 
-    class FormNotExecutable : public std::exception {
+    class FormNotSigned : public std::exception {
     public:
         const char *what() const throw() {
-            return "Grade cannot be lower than 150";
+            return "Form is not signed";
         }
     };
 

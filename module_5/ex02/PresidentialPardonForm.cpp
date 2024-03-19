@@ -34,7 +34,7 @@ void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
     }
 
     std::cout << "\e[33m \e[3;37m" << target
-              << "\e[;3;33m has been pardoned by the \e[1;35mGreat Zaphod "
+              << "\e[;33m has been pardoned by the \e[1;35mGreat Zaphod "
                  "Beeblebrox\e[0m"
               << std::endl;
 }

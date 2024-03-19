@@ -88,15 +88,22 @@ short AForm::checkGrade(short grade) const {
 }
 
 bool AForm::canExec(const Bureaucrat &executor, short gradeToExecute) const {
+    (void)gradeToExecute;
     try {
-        if (executor.getGrade() > gradeToExecute)
+        if (!isSigned)
+            throw AForm::FormNotSigned();
+        else if (executor.getGrade() > gradeToSign)
             throw AForm::GradeTooLowException();
         return true;
     } catch (const AForm::GradeTooLowException &ex) {
-        std::cerr << "\e[1;31m [ERROR] \e[3;37m" << executor.getName()
-                  << "\e[;31m cannot execute \e[3;37m" << name
-                  << " \e[;3;30m(\e[1;31m" << executor.getGrade()
-                  << "\e[;3;30m/" << gradeToExecute << ")\e[0m" << std::endl;
+        std::cerr << "\e[1;31m✖ \e[1;37m" << executor.getName()
+                  << "\e[0m cannot execute the Form \e[1;36m" << name
+                  << "\e[0m (\e[1;31m" << executor.getGrade() << "\e[0m/"
+                  << gradeToSign << ")" << std::endl;
+    } catch (const AForm::FormNotSigned &ex) {
+        std::cerr << "\e[1;31m✖ \e[1;37m" << executor.getName()
+                  << "\e[0m cannot execute the Form \e[1;36m" << name
+                  << "\e[0m (\e[1;31mnot signed\e[0m)" << std::endl;
     }
     return false;
 }
@@ -109,13 +116,13 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
         if (bureaucrat.getGrade() > gradeToSign)
             throw AForm::GradeTooLowException();
         isSigned = true;
-        std::cout << "\e[1;37m" << bureaucrat.getName()
-                  << "\e[0m signed the AForm \e[1;33m" << name << "\e[0m"
+        std::cout << "\e[1;32m \e[1;37m" << bureaucrat.getName()
+                  << "\e[0m signed the Form \e[1;36m" << name << "\e[0m"
                   << std::endl;
     } catch (const AForm::GradeTooLowException &ex) {
-        std::cerr << "\e[1;37m" << bureaucrat.getName()
-                  << "\e[0m cannot sign the AForm \e[1;33m" << name
-                  << "\e[0m(\e[1;31m" << bureaucrat.getGrade() << "\e[0m/"
+        std::cerr << "\e[1;31m✖ \e[1;37m" << bureaucrat.getName()
+                  << "\e[0m cannot sign the Form \e[1;36m" << name
+                  << "\e[0m (\e[1;31m" << bureaucrat.getGrade() << "\e[0m/"
                   << gradeToSign << ")" << std::endl;
     } catch (const AForm::AlreadySignedException &ex) {
         std::cerr << "\e[1;33m" << name << "\e[0m is already signed"
@@ -125,8 +132,8 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
 
 void AForm::debugPrint(bool creation) const {
     if (creation)
-        std::cout << "\e[32m󱪝 Form (\e[3;37m" << name
-                  << "\e[;32m) was created with grade to sign \e[1;33m"
+        std::cout << "\e[1;32m󰈙 \e[36m" << name
+                  << "\e[;32m was created with grade to sign \e[1;33m"
                   << gradeToSign << "\e[;32m and grade to execute \e[1;33m"
                   << gradeToExecute << "\e[0m" << std::endl;
     else

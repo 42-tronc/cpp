@@ -42,8 +42,9 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
         if (outfile.bad()) {
             throw FileNotWrittenException();
         }
-        std::cout << "\e[3;33m󰔱 Shrubbery for \e[3;37m" << target
-                  << "\e[;33m has been created successfully\e[0m" << std::endl;
+        std::cout << "\e[1;32m󰔱 \e[;32mShrubbery file (\e[3;37m" << target
+                  << "_shrubbery\e[;32m) has been created successfully\e[0m"
+                  << std::endl;
         outfile.close();
     } catch (const FileNotOpenedException& ex) {
         std::cerr << ex.what() << std::endl;
