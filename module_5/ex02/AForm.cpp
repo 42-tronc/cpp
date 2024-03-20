@@ -142,7 +142,7 @@ void AForm::debugPrint(bool creation) const {
 }
 
 std::ostream &operator<<(std::ostream &stream, const AForm &AForm) {
-    stream << "\e[1;36m" << AForm.getName() << "\e[0m AForm is "
+    stream << "\e[1;36m" << AForm.getName() << "\e[0m Form is "
            << (AForm.getIsSigned() ? "\e[1;32m" : "\e[1;31mnot ")
            << "signed\e[0m (Sign: \e[1;33m" << AForm.getGradeToSign()
            << "\e[0m, Execute: \e[1;33m" << AForm.getGradeToExecute()
