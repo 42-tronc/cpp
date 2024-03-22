@@ -1,6 +1,9 @@
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
+// TODO: add some members to the Data class
+struct Data {};
+
 class Serializer {
 public:
     uintptr_t serialize(Data* ptr);  // convert Data pointer to unsigned integer
