@@ -13,7 +13,7 @@ public:
     AForm();
     AForm(const std::string name, short gradeToSign, short gradeToExecute);
     AForm(const AForm &other);
-    ~AForm();
+    virtual ~AForm() = 0;
 
     AForm &operator=(const AForm &other);
 
