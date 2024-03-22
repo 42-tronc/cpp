@@ -29,18 +29,12 @@ public:
 
     class GradeTooHighException : public std::exception {
     public:
-        const char *what() const
-            throw() {  // throw() is only for c++98 (tells the compiler that the
-                       // function will not throw any exceptions)
-            return "Grade cannot be higher than 1";
-        }
+        const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
     public:
-        const char *what() const throw() {
-            return "Grade cannot be lower than 150";
-        }
+        const char *what() const throw();
     };
 
 private:

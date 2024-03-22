@@ -92,6 +92,14 @@ void Bureaucrat::signForm(Form& form) {
     form.beSigned(*this);
 }
 
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade cannot be higher than 1";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade cannot be lower than 150";
+}
+
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat) {
     std::cout << "\e[1;37m" << bureaucrat.getName() << "\e[0m has a grade of "
               << "\e[1;33m" << bureaucrat.getGrade() << "\e[0m";
