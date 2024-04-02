@@ -67,9 +67,9 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := convert
-HEADER := Serializer.hpp
-SRC := main.cpp Serializer.cpp
+NAME := identify
+HEADER := Base.hpp
+SRC := main.cpp
 
 # -------------- RECIPES --------------
 all: $(NAME) | $(OBJ_DIR)
