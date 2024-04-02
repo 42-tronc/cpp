@@ -1,13 +1,20 @@
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
-// TODO: add some members to the Data class
-struct Data {};
+#include <stdint.h>
+
+#include <iostream>
+
+struct Data {
+    int grade;
+    std::string name;
+    bool isEnrolled;
+};
 
 class Serializer {
 public:
-    uintptr_t serialize(Data* ptr);  // convert Data pointer to unsigned integer
-    Data* deserialize(uintptr_t raw);  // convert unsigned int to Data pointer
+    static uintptr_t serialize(Data* ptr);
+    static Data* deserialize(uintptr_t raw);
 
 private:
     Serializer();
