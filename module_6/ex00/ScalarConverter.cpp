@@ -31,24 +31,31 @@ void convertChar(const std::string& inputStr) {
     if (isPseudoLiteral(inputStr))
         printResult("Char", "impossible");
     else if (c < 32 || c > 126)
-        printResult("Char", "Non displayable");
-    else
-        printResult("Char", std::string(1, c));
+        printResult("Char", "non displayable");
+    else {
+        std::stringstream ss;
+        ss << "'" << c << "'";
+        printResult("Char", ss.str());
+    }
 }
 
 void convertInt(const std::string& inputStr) {
-    long inputLong = atol(inputStr.c_str());
+    std::istringstream iss(inputStr);
+    long inputLong;
+    iss >> inputLong;
 
     if (isPseudoLiteral(inputStr) ||
         inputLong < std::numeric_limits<int>::min() ||
         inputLong > std::numeric_limits<int>::max())
         printResult("Int", "impossible");
     else
-        printResult("Int", inputLong);
+        printResult("Int", static_cast<int>(inputLong));
 }
 
 void convertFloat(const std::string& inputStr) {
-    float f = atof(inputStr.c_str());
+    std::istringstream iss(inputStr);
+    double f;
+    iss >> f;
 
     if (isPseudoLiteral(inputStr))
         printResult("Float", inputStr + "f");
@@ -64,7 +71,9 @@ void convertFloat(const std::string& inputStr) {
 }
 
 void convertDouble(const std::string& inputStr) {
-    double d = atof(inputStr.c_str());
+    std::istringstream iss(inputStr);
+    double d;
+    iss >> d;
 
     if (isPseudoLiteral(inputStr))
         printResult("Double", inputStr);
