@@ -88,3 +88,8 @@ void ScalarConverter::convert(const std::string& inputStr) {
 ScalarConverter::~ScalarConverter() {
     std::cout << "Destructor called" << std::endl;
 }
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
+    (void)other;
+    return *this;
+}
