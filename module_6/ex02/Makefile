@@ -105,18 +105,6 @@ valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
 valgrind: run
 
 run: all
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 0
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) nan
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 42.0f
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) -inf
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 2147483649
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME)
-# $(VALGRIND) ./$(NAME) $(ARGS)
+	$(VALGRIND) ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re debug valgrind test
