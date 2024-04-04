@@ -115,6 +115,16 @@ run: all
 	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) 2147483649
 	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) +inff
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) e
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) bjr
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) -5500000000000000000000000000000
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) ""
+	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME)
 # $(VALGRIND) ./$(NAME) $(ARGS)
 
