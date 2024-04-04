@@ -104,6 +104,18 @@ int main(int, char**) {
     }
     printArray(strings);
 
+    printAction("Create an array of const ints and print its size");
+    const Array<int> constNumbers(5);
+    printSize(constNumbers);
+
+    printAction("Try to change an element of the const array");
+    try {
+        constNumbers[0] = 42;
+    } catch (const std::exception& ex) {
+        std::cerr << ex.what() << std::endl;
+    }
+    printArray(constNumbers);
+
     printAction("Testing with the subject's main.cpp file");
     {
         Array<int> numbers(MAX_VAL);
@@ -114,6 +126,11 @@ int main(int, char**) {
             numbers[i] = value;
             mirror[i] = value;
         }
+
+        printAction("Print the array and its size");
+        printSize(numbers);
+        printArray(numbers);
+
         // SCOPE
         {
             Array<int> tmp = numbers;
@@ -126,11 +143,15 @@ int main(int, char**) {
                 return 1;
             }
         }
+
+        printAction("Try to access an element out of the array's bounds");
         try {
             numbers[-2] = 0;
         } catch (const std::exception& e) {
             std::cerr << e.what() << '\n';
         }
+
+        printAction("Try to access an element out of the array's bounds");
         try {
             numbers[MAX_VAL] = 0;
         } catch (const std::exception& e) {
