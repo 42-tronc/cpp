@@ -15,7 +15,7 @@ void printSize(const Array<T>& arr) {
 }
 
 template <typename T>
-void printArray(Array<T>& arr) {
+void printArray(const Array<T>& arr) {
     std::cout << "\e[1;33mArray: \e[0m";
     for (size_t i = 0; i < arr.getSize(); i++) {
         std::cout << arr[i] << " ";
