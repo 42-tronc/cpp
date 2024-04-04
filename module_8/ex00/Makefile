@@ -68,7 +68,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 # --------- PROJECT VARIABLES ---------
 NAME := array
-HEADER := Array.hpp
+HEADER := easyfind.hpp
 SRC := main.cpp
 
 # -------------- RECIPES --------------
