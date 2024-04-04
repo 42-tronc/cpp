@@ -29,7 +29,7 @@ public:
         }
         return *this;
     }
-    T& operator[](size_t i) {
+    T& operator[](const size_t i) const {
         if (i >= size)
             throw std::out_of_range("\e[1;31mIndex out of range\e[0m");
         return array[i];
