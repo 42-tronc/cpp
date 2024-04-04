@@ -24,11 +24,16 @@ bool isPseudoLiteral(const std::string& inputStr) {
     return (inputStr.find("nan") != std::string::npos ||
             inputStr.find("inf") != std::string::npos);
 }
+// FIXME: inf to inf not infffff
 
-void convertChar(const std::string& inputStr) {
-    char c = static_cast<char>(atoi(inputStr.c_str()));
+void convertChar(const std::string& inputStr, long double ld) {
+    std::istringstream iss(inputStr);
+    char c;
+    iss >> c;
 
-    if (isPseudoLiteral(inputStr))
+    if (isPseudoLiteral(inputStr) || inputStr.empty() ||
+        ld > std::numeric_limits<char>::max() ||
+        ld < std::numeric_limits<char>::min())
         printResult("Char", "impossible");
     else if (c < 32 || c > 126)
         printResult("Char", "non displayable");
@@ -37,6 +42,15 @@ void convertChar(const std::string& inputStr) {
         ss << "'" << c << "'";
         printResult("Char", ss.str());
     }
+    // if (isPseudoLiteral(inputStr) || inputStr.empty())
+    //     printResult("Char", "impossible");
+    // else if (c < 32 || c > 126)
+    //     printResult("Char", "non displayable");
+    // else {
+    //     std::stringstream ss;
+    //     ss << "'" << c << "'";
+    //     printResult("Char", ss.str());
+    // }
 }
 
 void convertInt(const std::string& inputStr) {
@@ -54,9 +68,13 @@ void convertInt(const std::string& inputStr) {
 
 void convertFloat(const std::string& inputStr) {
     std::istringstream iss(inputStr);
-    double f;
+    long double f;
     iss >> f;
 
+    // std::cout << "min float: " << std::fixed
+    //           << std::numeric_limits<float>::min() << std::endl;
+    // std::cout << "max float: " << std::fixed
+    //           << std::numeric_limits<float>::max() << std::endl;
     if (isPseudoLiteral(inputStr))
         printResult("Float", inputStr + "f");
     else if (f < -std::numeric_limits<float>::max() ||
@@ -72,7 +90,7 @@ void convertFloat(const std::string& inputStr) {
 
 void convertDouble(const std::string& inputStr) {
     std::istringstream iss(inputStr);
-    double d;
+    long double d;
     iss >> d;
 
     if (isPseudoLiteral(inputStr))
@@ -88,7 +106,16 @@ void convertDouble(const std::string& inputStr) {
 }
 
 void ScalarConverter::convert(const std::string& inputStr) {
-    convertChar(inputStr);
+    long double ld;
+    std::istringstream iss(inputStr);
+    iss >> ld;
+    std::cout << "ld = " << ld << std::endl;
+
+    // if (iss.fail() || iss.bad()) {
+    //     std::cerr << "Error: Invalid input" << std::endl;
+    //     return;
+    // }
+    convertChar(inputStr, ld);
     convertInt(inputStr);
     convertFloat(inputStr);
     convertDouble(inputStr);
