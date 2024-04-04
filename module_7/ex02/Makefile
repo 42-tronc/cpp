@@ -67,8 +67,8 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := identify
-HEADER := Base.hpp
+NAME := array
+HEADER := Array.hpp
 SRC := main.cpp
 
 # -------------- RECIPES --------------
@@ -88,7 +88,6 @@ $(OBJ_DIR) :
 clean:
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_DIR)
-	$(RM) *_shrubbery
 	@echo -e "$(FG_RED)Clean:\t\t $(FG_LIGHT_GRAY)$(ITALIC)$(NAME) object files$(RESET) have been deleted"
 
 fclean: clean
@@ -105,18 +104,6 @@ valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
 valgrind: run
 
 run: all
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 0
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) nan
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 42.0f
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) -inf
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME) 2147483649
-	@echo -e "\e[30m"
-	$(VALGRIND) ./$(NAME)
-# $(VALGRIND) ./$(NAME) $(ARGS)
+	$(VALGRIND) ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re debug valgrind test
