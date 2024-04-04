@@ -88,7 +88,6 @@ $(OBJ_DIR) :
 clean:
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_DIR)
-	$(RM) *_shrubbery
 	@echo -e "$(FG_RED)Clean:\t\t $(FG_LIGHT_GRAY)$(ITALIC)$(NAME) object files$(RESET) have been deleted"
 
 fclean: clean
