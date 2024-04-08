@@ -21,8 +21,8 @@ void printResult(const std::string& type, const T& result) {
  * std::string::npos.
  */
 bool isPseudoLiteral(const std::string& inputStr) {
-    return (inputStr.find("nan") != std::string::npos ||
-            inputStr.find("inf") != std::string::npos);
+    return (inputStr == "nan" || inputStr == "inf" || inputStr == "-inf" ||
+            inputStr == "+inf" || inputStr == "+inff" || inputStr == "-inff");
 }
 // FIXME: inf to inf not infffff
 
@@ -86,10 +86,10 @@ void ScalarConverter::convert(const std::string& inputStr) {
 
     std::cout << "ld = " << ld << std::endl;
 
-    // if (iss.fail() || iss.bad()) {
-    //     std::cerr << "Error: Invalid input" << std::endl;
-    //     return;
-    // }
+    if (inputStr.empty() || (iss.fail() && !isPseudoLiteral(inputStr))) {
+        std::cerr << "\e[1;31mError: \e[;31mInvalid input.\e[0m" << std::endl;
+        return;
+    }
     convertChar(inputStr, ld);
     convertInt(inputStr, ld);
     convertFloat(inputStr, ld);
