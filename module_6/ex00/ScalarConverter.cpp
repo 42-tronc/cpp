@@ -79,7 +79,11 @@ void convertDouble(const std::string& inputStr, long double ld) {
 void ScalarConverter::convert(const std::string& inputStr) {
     long double ld;
     std::istringstream iss(inputStr);
-    iss >> ld;
+    if (inputStr.size() == 1 && !std::isdigit(inputStr[0]))
+        ld = static_cast<long double>(inputStr[0]);
+    else
+        iss >> ld;
+
     std::cout << "ld = " << ld << std::endl;
 
     // if (iss.fail() || iss.bad()) {
