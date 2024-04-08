@@ -6,8 +6,6 @@ void printAction(const std::string& str) {
 
 int main(int ac, char** av) {
     std::cout << "\e[;37m";
-    (void)ac;
-    (void)av;
 
     if (ac != 2) {
         std::cerr
