@@ -35,3 +35,25 @@ You can add additional files to your project if you need to, but you must includ
 If the example shows a requirement, it is mandatory, even if it is not specified in the subject.
 
 When allocating **memory** by using `new` or `new[]`, you must free it with `delete` or `delete[]`.
+
+
+## Module 00
+
+
+## Module 06
+
+### ex00
+`./convert 47hello`
+`./convert 47.`
+`./convert 47.f`
+`./convert 47ff`
+`./convert inff`
+`./convert infff`
+`./convert +inff`
+`./convert -inff`
+`./convert nan`
+`./convert nanf`
+`./convert "bjr"`
+`./convert 0`
+`./convert ""`
+`./convert`
