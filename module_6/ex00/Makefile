@@ -127,6 +127,12 @@ run: all
 	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) 37hello
 	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) 47.
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) 47.f
+	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) 47.0f
+	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) ""
 	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME)
