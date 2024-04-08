@@ -25,6 +25,30 @@ bool isPseudoLiteral(const std::string& inputStr) {
             inputStr == "+inf" || inputStr == "+inff" || inputStr == "-inff");
 }
 
+bool erroredInput(std::string inputStr) {
+    size_t i = 0;
+    if (inputStr[i] == '+' || inputStr[i] == '-')
+        i++;
+
+    while (isdigit(inputStr[i])) {
+        i++;
+    }
+
+    if (i == inputStr.size())
+        return (false);
+    if (inputStr[i] == '.' && isdigit(inputStr[i + 1])) {
+        i++;
+        while (isdigit(inputStr[i])) {
+            i++;
+        }
+    }
+    if (i == inputStr.size())
+        return (false);
+    if (inputStr[i] == 'f' && i + 1 == inputStr.size())
+        return (false);
+    return (true);
+}
+
 void convertChar(const std::string& inputStr, long double ld) {
     if (isPseudoLiteral(inputStr) || inputStr.empty() ||
         ld > std::numeric_limits<char>::max() ||
@@ -91,7 +115,8 @@ void ScalarConverter::convert(const std::string& inputStr) {
 
     std::cout << "ld = " << ld << std::endl;
 
-    if (inputStr.empty() || (iss.fail() && !isPseudoLiteral(inputStr))) {
+    if (inputStr.empty() || (iss.fail() && !isPseudoLiteral(inputStr)) ||
+        (!iss.fail() && erroredInput(inputStr) && inputStr.size() > 1)) {
         std::cerr << "\e[1;31mError: \e[;31mInvalid input.\e[0m" << std::endl;
         return;
     }
