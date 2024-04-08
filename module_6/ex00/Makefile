@@ -117,6 +117,8 @@ run: all
 	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) +inff
 	@echo -e "\e[30m"
+	$(VALGRIND) ./$(NAME) +infff
+	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) e
 	@echo -e "\e[30m"
 	$(VALGRIND) ./$(NAME) bjr
