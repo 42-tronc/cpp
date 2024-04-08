@@ -27,30 +27,18 @@ bool isPseudoLiteral(const std::string& inputStr) {
 // FIXME: inf to inf not infffff
 
 void convertChar(const std::string& inputStr, long double ld) {
-    std::istringstream iss(inputStr);
-    char c;
-    iss >> c;
-
     if (isPseudoLiteral(inputStr) || inputStr.empty() ||
         ld > std::numeric_limits<char>::max() ||
         ld < std::numeric_limits<char>::min())
         printResult("Char", "impossible");
-    else if (c < 32 || c > 126)
+    else if (ld < 32 || ld > 126) {
         printResult("Char", "non displayable");
-    else {
+    } else {
+        char c = static_cast<char>(ld);
         std::stringstream ss;
         ss << "'" << c << "'";
         printResult("Char", ss.str());
     }
-    // if (isPseudoLiteral(inputStr) || inputStr.empty())
-    //     printResult("Char", "impossible");
-    // else if (c < 32 || c > 126)
-    //     printResult("Char", "non displayable");
-    // else {
-    //     std::stringstream ss;
-    //     ss << "'" << c << "'";
-    //     printResult("Char", ss.str());
-    // }
 }
 
 void convertInt(const std::string& inputStr, long double ld) {
