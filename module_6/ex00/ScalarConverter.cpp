@@ -24,7 +24,6 @@ bool isPseudoLiteral(const std::string& inputStr) {
     return (inputStr == "nan" || inputStr == "inf" || inputStr == "-inf" ||
             inputStr == "+inf" || inputStr == "+inff" || inputStr == "-inff");
 }
-// FIXME: inf to inf not infffff
 
 void convertChar(const std::string& inputStr, long double ld) {
     if (isPseudoLiteral(inputStr) || inputStr.empty() ||
@@ -50,10 +49,13 @@ void convertInt(const std::string& inputStr, long double ld) {
 }
 
 void convertFloat(const std::string& inputStr, long double ld) {
-    if (isPseudoLiteral(inputStr))
-        printResult("Float", inputStr + "f");
-    else if (ld < -std::numeric_limits<float>::max() ||
-             ld > std::numeric_limits<float>::max())
+    if (isPseudoLiteral(inputStr)) {
+        if (inputStr.find("ff") != std::string::npos)
+            printResult("Float", inputStr);
+        else
+            printResult("Float", inputStr + "f");
+    } else if (ld < -std::numeric_limits<float>::max() ||
+               ld > std::numeric_limits<float>::max())
         printResult("Float", "impossible");
     else {
         std::stringstream ss;
@@ -64,10 +66,13 @@ void convertFloat(const std::string& inputStr, long double ld) {
 }
 
 void convertDouble(const std::string& inputStr, long double ld) {
-    if (isPseudoLiteral(inputStr))
-        printResult("Double", inputStr);
-    else if (ld < -std::numeric_limits<double>::max() ||
-             ld > std::numeric_limits<double>::max())
+    if (isPseudoLiteral(inputStr)) {
+        if (inputStr.find("ff") != std::string::npos)
+            printResult("Double", inputStr.substr(0, inputStr.size() - 1));
+        else
+            printResult("Double", inputStr);
+    } else if (ld < -std::numeric_limits<double>::max() ||
+               ld > std::numeric_limits<double>::max())
         printResult("Double", "impossible");
     else {
         std::stringstream ss;
