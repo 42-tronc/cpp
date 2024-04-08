@@ -61,24 +61,16 @@ void convertInt(const std::string& inputStr, long double ld) {
         printResult("Int", static_cast<int>(ld));
 }
 
-void convertFloat(const std::string& inputStr) {
-    std::istringstream iss(inputStr);
-    long double f;
-    iss >> f;
-
-    // std::cout << "min float: " << std::fixed
-    //           << std::numeric_limits<float>::min() << std::endl;
-    // std::cout << "max float: " << std::fixed
-    //           << std::numeric_limits<float>::max() << std::endl;
+void convertFloat(const std::string& inputStr, long double ld) {
     if (isPseudoLiteral(inputStr))
         printResult("Float", inputStr + "f");
-    else if (f < -std::numeric_limits<float>::max() ||
-             f > std::numeric_limits<float>::max())
+    else if (ld < -std::numeric_limits<float>::max() ||
+             ld > std::numeric_limits<float>::max())
         printResult("Float", "impossible");
     else {
         std::stringstream ss;
-        ss << std::fixed << std::setprecision(1) << f
-           << "f";  // Format float with one decimal place and append "f"
+        ss << std::fixed << std::setprecision(1) << static_cast<float>(ld)
+           << "f";
         printResult("Float", ss.str());
     }
 }
@@ -112,7 +104,7 @@ void ScalarConverter::convert(const std::string& inputStr) {
     // }
     convertChar(inputStr, ld);
     convertInt(inputStr, ld);
-    convertFloat(inputStr);
+    convertFloat(inputStr, ld);
     convertDouble(inputStr);
 }
 
