@@ -1,3 +1,5 @@
+#include <cstring>
+
 #include "ScalarConverter.hpp"
 
 void printAction(const std::string& str) {
@@ -7,7 +9,7 @@ void printAction(const std::string& str) {
 int main(int ac, char** av) {
     std::cout << "\e[;37m";
 
-    if (ac != 2) {
+    if (ac != 2 || !strlen(av[1])) {
         std::cerr
             << "\e[1;31mError: \e[;31mInvalid number of arguments.\e[0m\n\n"
             << "\e[33mUsage: ./scalar_converter <value>\e[0m" << std::endl;
