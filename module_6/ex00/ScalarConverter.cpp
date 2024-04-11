@@ -113,8 +113,6 @@ void ScalarConverter::convert(const std::string& inputStr) {
     else
         iss >> ld;
 
-    std::cout << "ld = " << ld << std::endl;
-
     if (inputStr.empty() || (iss.fail() && !isPseudoLiteral(inputStr)) ||
         (!iss.fail() && erroredInput(inputStr) && inputStr.size() > 1)) {
         std::cerr << "\e[1;31mError: \e[;31mInvalid input.\e[0m" << std::endl;
