@@ -1,3 +1,5 @@
+#include <fstream>
+
 #include "Span.hpp"
 
 void printAction(const std::string& str) {
@@ -52,8 +54,19 @@ int main(void) {
     Span bigSpan(15000);
 
     printAction("Add 15000 numbers to the big Span");
+    std::cout << "\e[35mBlocking cout to avoid spamming the terminal"
+              << std::endl;
+    // Save the buffer of std::cout
+    std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
+
     for (int i = 0; i < 15000; i++) {
+        // Block std::cout
+        if (i == 5)
+            std::cout.rdbuf(NULL);
         bigSpan.addNumber(i);
+        // Restore old std::cout
+        if (i == 14995)
+            std::cout.rdbuf(oldCoutStreamBuf);
     }
 
     printAction("Return the shortest span of the big Span");
