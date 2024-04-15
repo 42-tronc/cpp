@@ -67,8 +67,8 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := array
-HEADER := Array.hpp
+NAME := mutantstack
+HEADER := MutantStack.hpp
 SRC := main.cpp
 
 # -------------- RECIPES --------------
