@@ -81,5 +81,7 @@ int main(void) {
     std::cout << "\e[1mLongest span: \e[0m" << bigSpan.longestSpan()
               << std::endl;
 
+    printAction("Exit the program");
+
     return 0;
 }
