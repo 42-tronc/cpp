@@ -69,3 +69,19 @@ unsigned int Span::longestSpan() {
     return *std::max_element(numbers.begin(), numbers.end()) -
            *std::min_element(numbers.begin(), numbers.end());
 }
+
+void Span::fillSpan(
+    std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+    try {
+        if (std::distance(begin, end) > N)
+            throw std::out_of_range("Span is too small");
+        numbers.assign(begin, end);
+        std::cout << "\e[33m Span filled\e[0m" << std::endl;
+    } catch (std::out_of_range& ex) {
+        printError(ex.what());
+    }
+}
+
+unsigned int Span::getNumberAt(unsigned int index) {
+    return numbers[index];
+}

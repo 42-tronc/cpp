@@ -19,6 +19,11 @@ public:
     unsigned int shortestSpan();
     unsigned int longestSpan();
 
+    void fillSpan(
+        std::vector<int>::iterator begin, std::vector<int>::iterator end);
+
+    unsigned int getNumberAt(unsigned int index);
+
 private:
     unsigned int N;
     std::vector<int> numbers;

@@ -52,28 +52,30 @@ int main(void) {
 
     printAction("Create a span with over 10000 elements");
     Span bigSpan(15000);
+    std::vector<int> numbers(15000);
+    for (int i = 0; i < 15000; i++)
+        numbers[i] = i;
 
-    printAction("Add 15000 numbers to the big Span");
-    std::cout << "\e[35mBlocking cout to avoid spamming the terminal"
-              << std::endl;
-    // Save the buffer of std::cout
-    std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
+    printAction("Fill the big Span with 15000 numbers");
+    bigSpan.fillSpan(numbers.begin(), numbers.end());
 
-    for (int i = 0; i < 15000; i++) {
-        // Block std::cout
-        if (i == 5)
-            std::cout.rdbuf(NULL);
-        bigSpan.addNumber(i);
-        // Restore old std::cout
-        if (i == 14995)
-            std::cout.rdbuf(oldCoutStreamBuf);
-    }
+    printAction("Try to add a 15000th number to the big Span");
+    bigSpan.addNumber(42);
+
+    printAction("Show some numbers of the big Span");
+    for (int i = 0; i < 10; i++)
+        std::cout << bigSpan.getNumberAt(i) << " ";
+    std::cout << std::endl;
+    for (int i = 14990; i < 15000; i++)
+        std::cout << bigSpan.getNumberAt(i) << " ";
 
     printAction("Return the shortest span of the big Span");
-    std::cout << "Shortest span: " << bigSpan.shortestSpan() << std::endl;
+    std::cout << "\e[1mShortest span: \e[0m" << bigSpan.shortestSpan()
+              << std::endl;
 
     printAction("Return the longest span of the big Span");
-    std::cout << "Longest span: " << bigSpan.longestSpan() << std::endl;
+    std::cout << "\e[1mLongest span: \e[0m" << bigSpan.longestSpan()
+              << std::endl;
 
     return 0;
 }
