@@ -1,7 +1,10 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
+#include <climits>
 #include <iostream>
+#include <vector>
 
 class Span {
 public:
@@ -13,8 +16,12 @@ public:
 
     void addNumber(int number);
 
+    unsigned int shortestSpan();
+    unsigned int longestSpan();
+
 private:
     unsigned int N;
+    std::vector<int> numbers;
 };
 
 #endif
