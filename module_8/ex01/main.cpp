@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iomanip>
 
 #include "Span.hpp"
 
@@ -64,6 +65,9 @@ int main(void) {
 
     printAction("Show some numbers of the big Span");
     for (int i = 0; i < 10; i++)
+        std::cout << std::setw(5) << bigSpan.getNumberAt(i) << " ";
+    std::cout << std::endl;
+    for (int i = 10000; i < 10010; i++)
         std::cout << bigSpan.getNumberAt(i) << " ";
     std::cout << std::endl;
     for (int i = 14990; i < 15000; i++)
