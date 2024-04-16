@@ -21,28 +21,47 @@ int main(void) {
     std::cout << "\e[33m󰡏 Size: \e[1m" << mstack.size() << "\e[0m"
               << std::endl;
 
+    printAction("Pop the MutantStack and print the size");
+    mstack.pop();
+    std::cout << "\e[33m󰡏 Size: \e[1m" << mstack.size() << "\e[0m"
+              << std::endl;
 
-    // printAction("Pop the MutantStack and print the size");
-    // mstack.pop();
-    // std::cout << mstack.size() << std::endl;
+    printAction("Push 3, 5, and 737 to the MutantStack");
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+    mstack.push(0);
 
-    // printAction("Push 3, 5, and 737 to the MutantStack");
-    // mstack.push(3);
-    // mstack.push(5);
-    // mstack.push(737);
-    // //[...]
-    // mstack.push(0);
+    printAction("Iterate through the MutantStack and print the values");
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator end = mstack.end();
+    while (it != end) {
+        std::cout << *it << std::endl;
+        ++it;
+    }
 
-    // printAction("Iterate through the MutantStack and print the values");
-    // MutantStack<int>::iterator it = mstack.begin();
-    // MutantStack<int>::iterator ite = mstack.end();
-    // ++it;
-    // --it;
-    // while (it != ite) {
-    //     std::cout << *it << std::endl;
-    //     ++it;
-    // }
-    // std::stack<int> s(mstack);
+    printAction("Copy the MutantStack to a stack");
+    std::stack<int> stack(mstack);
+
+    printAction("Iterate through the stack and print the values");
+    while (!stack.empty()) {
+        std::cout << stack.top() << std::endl;
+        stack.pop();
+    }
+
+    printAction("Create a MutantStack with a list of integers");
+    MutantStack<int> mstack2;
+    for (int i = 0; i <= 10; i++) {
+        mstack2.push(i);
+    }
+
+    printAction("Iterate through the MutantStack and print the values");
+    MutantStack<int>::iterator it2 = mstack2.begin();
+    MutantStack<int>::iterator end2 = mstack2.end();
+    while (it2 != end2) {
+        std::cout << *it2 << std::endl;
+        ++it2;
+    }
 
     return 0;
 }
