@@ -96,6 +96,8 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
         float value = 0;
 
         try {
+            if (line.empty())
+                throw std::runtime_error("line is empty");
         if (isDataCsv) {
             std::getline(iss, date, ',');
             std::getline(iss, valueStr);
