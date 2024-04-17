@@ -108,10 +108,13 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
                     throw std::runtime_error("invalid line format");
 
             delimiter = line.at(10);
-        } else
+            } else {
             iss >> date >> delimiter >> value;
+                if (iss.fail())
+                    throw std::runtime_error("invalid line format");
+            }
 
-        // std::cout << "\e[1mDate: \e[;35m" << std::setw(10) << date
+            checkFileDelimiter(isDataCsv, delimiter);
         //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
         } catch (const std::runtime_error& ex) {
             if (isDataCsv)
