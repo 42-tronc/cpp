@@ -183,13 +183,3 @@ int main(int ac, char** av) {
 
     return 0;
 }
-
-// TODO:
-// [x] data.csv should be here
-// [x] must take a file as an arg
-// [x] date | value for input
-// [x] date,value for data.csv
-// [] YYYY-MM-DD | value
-// [] value is a float between 0 and 1000
-// [] date is not before 2009-01-09 (bitcoin creation date)
-// [] date is not after the current date
