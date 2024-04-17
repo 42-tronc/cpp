@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iomanip>
 #include <iostream>
 
@@ -64,8 +65,7 @@ void getDates(const std::string& filename) {
 }
 
 int main(int ac, char** av) {
-    (void)av;
-    if (ac != 2) {
+    if (ac != 2 || !strlen(av[1])) {
         printError("invalid number of arguments.");
         return 1;
     }
