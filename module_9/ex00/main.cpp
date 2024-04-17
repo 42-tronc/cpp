@@ -62,6 +62,8 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
         if (isDataCsv) {
             std::getline(iss, date, ',');
             std::getline(iss, valueStr);
+            std::istringstream issValue(valueStr);
+            issValue >> value;
             delimiter = line.at(10);
         } else
             iss >> date >> delimiter >> value;
