@@ -6,7 +6,7 @@
 void printError(const std::string& message, bool usage = true) {
     std::cerr << "\e[1;31mError: \e[;31m" << message << "\e[0m" << std::endl;
     if (usage)
-        std::cerr << "\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
+        std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
 }
 
 // bool isParsedDateValid(const std::string& date) {
