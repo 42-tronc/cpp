@@ -31,7 +31,7 @@ void printError(const std::string& message, short level,
 void checkFileExist(const std::string& filename) {
     std::ifstream file(filename.c_str());
     if (!file.good()) {
-        throw std::runtime_error(filename + " is missing.");
+        throw std::runtime_error(filename + " is missing");
     }
 }
 
@@ -41,7 +41,7 @@ bool checkFileHeader(bool isDataCsv, std::string& line) {
     else if (!isDataCsv && line == "date | value")
         return true;
     else
-        throw std::runtime_error("invalid header (" + line + ").");
+        throw std::runtime_error("invalid header");
 
     return false;
 }
@@ -52,7 +52,7 @@ bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
     else if (!isDataCsv && delim == "|")
         return true;
     else
-        throw std::runtime_error("invalid header delimiter (" + delim + ").");
+        throw std::runtime_error("invalid delimiter");
 
     return false;
 }
@@ -64,7 +64,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
 
     // Check if the file is empty
     if (file.peek() == std::ifstream::traits_type::eof() || !file.good())
-        throw std::runtime_error(filename + " is empty.");
+        throw std::runtime_error(filename + " is empty");
 
     while (std::getline(file, line)) {
         // Check the first line
