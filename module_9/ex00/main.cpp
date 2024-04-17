@@ -161,7 +161,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
 
 int main(int ac, char** av) {
     if (ac != 2 || !strlen(av[1])) {
-        printError("invalid number of arguments.", ERROR);
+        printError("invalid number of arguments", ERROR);
         return 1;
     }
 
