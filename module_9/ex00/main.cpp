@@ -118,18 +118,18 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
         try {
             if (line.empty())
                 throw std::runtime_error("line is empty");
-        if (isDataCsv) {
-            std::getline(iss, date, ',');
-            std::getline(iss, valueStr);
-            std::istringstream issValue(valueStr);
-            issValue >> value;
+            if (isDataCsv) {
+                std::getline(iss, date, ',');
+                std::getline(iss, valueStr);
+                std::istringstream issValue(valueStr);
+                issValue >> value;
 
                 if (line.length() < 11)
                     throw std::runtime_error("invalid line format");
 
-            delimiter = line.at(10);
+                delimiter = line.at(10);
             } else {
-            iss >> date >> delimiter >> value;
+                iss >> date >> delimiter >> value;
                 if (iss.fail())
                     throw std::runtime_error("invalid line format");
             }
@@ -138,7 +138,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
             checkDate(isDataCsv, date);
 
             // std::cout << "\e[1mDate: \e[;35m" << date
-        //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
+            //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
             //           value
             //           << "\e[0m" << std::endl;
 
