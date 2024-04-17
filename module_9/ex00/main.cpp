@@ -103,6 +103,10 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
             std::getline(iss, valueStr);
             std::istringstream issValue(valueStr);
             issValue >> value;
+
+                if (line.length() < 11)
+                    throw std::runtime_error("invalid line format");
+
             delimiter = line.at(10);
         } else
             iss >> date >> delimiter >> value;
