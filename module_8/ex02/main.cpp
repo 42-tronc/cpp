@@ -26,7 +26,7 @@ int main(void) {
     std::cout << "\e[33m󰡏 Size: \e[1m" << mstack.size() << "\e[0m"
               << std::endl;
 
-    printAction("Push 3, 5, and 737 to the MutantStack");
+    printAction("Push 3, 5, 737 and 0 to the MutantStack");
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
