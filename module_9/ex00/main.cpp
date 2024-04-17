@@ -145,6 +145,8 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
 
             checkFileDelimiter(isDataCsv, delimiter);
             checkDate(isDataCsv, date);
+            if (!isDataCsv && (value < 0 || value > 1000))
+                throw std::runtime_error("value is not between 0 and 1000");
 
             // std::cout << "\e[1mDate: \e[;35m" << date
             //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
