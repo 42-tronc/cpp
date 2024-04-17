@@ -8,6 +8,14 @@ void printError(const std::string& message, bool usage = true) {
     if (usage)
         std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
 }
+
+void checkFileExist(const std::string& filename) {
+    std::ifstream file(filename.c_str());
+    if (!file.good()) {
+        throw std::runtime_error(filename + " is missing.");
+    }
+}
+
 bool checkFileHeader(bool isDataCsv, std::string& line) {
     if (isDataCsv && line == "date,exchange_rate")
         return true;
