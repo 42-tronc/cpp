@@ -1,4 +1,5 @@
 #include <cstring>
+#include <ctime>
 #include <iomanip>
 #include <iostream>
 
@@ -54,6 +55,24 @@ bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
         throw std::runtime_error("invalid delimiter");
 
     return false;
+}
+
+bool dateIsPast(int year, int month, int day) {
+    std::time_t now = std::time(0);
+    std::tm* localTime = std::localtime(&now);
+
+    int currentYear = localTime->tm_year + 1900;
+    int currentMonth = localTime->tm_mon + 1;
+    int currentDay = localTime->tm_mday;
+
+    if (year > currentYear)
+        return false;
+    if (year == currentYear && month > currentMonth)
+        return false;
+    if (year == currentYear && month == currentMonth && day > currentDay)
+        return false;
+
+    return true;
 }
 
 void checkFileContent(const std::string& filename, bool isDataCsv = false) {
