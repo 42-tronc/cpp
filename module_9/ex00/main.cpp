@@ -136,7 +136,12 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
 
             checkFileDelimiter(isDataCsv, delimiter);
             checkDate(isDataCsv, date);
+
+            // std::cout << "\e[1mDate: \e[;35m" << date
         //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
+            //           value
+            //           << "\e[0m" << std::endl;
+
         } catch (const std::runtime_error& ex) {
             if (isDataCsv)
                 throw;
