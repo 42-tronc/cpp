@@ -94,12 +94,8 @@ int main(int ac, char** av) {
         std::cout << "\e[1;32mSuccess: \e[;32mdata.csv is valid.\e[0m"
                   << std::endl;
 
-        checkFileContent(av[1]);
-        std::cout << "\e[1;32mSuccess: \e[;32m" << av[1] << " is valid.\e[0m"
-                  << std::endl;
-
     } catch (const std::exception& ex) {
-        std::cerr << ex.what() << '\n';
+        printError(ex.what());
     }
 
     return 0;
