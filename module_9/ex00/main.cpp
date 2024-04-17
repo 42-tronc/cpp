@@ -171,14 +171,16 @@ int main(int ac, char** av) {
         checkFileExist(av[1]);
         checkFileExist("data.csv");
         checkFileContent(av[1]);
-        std::cout << "\e[1;32mSuccess: \e[;32m" << av[1] << " is valid.\e[0m\n"
-                  << std::endl;
+        // std::cout << "\e[1;32mSuccess: \e[;32m" << av[1] << " is
+        // valid.\e[0m\n"
+        //           << std::endl;
         checkFileContent("data.csv", true);
-        std::cout << "\e[1;32mSuccess: \e[;32mdata.csv is valid.\e[0m"
-                  << std::endl;
+        // std::cout << "\e[1;32mSuccess: \e[;32mdata.csv is valid.\e[0m"
+        //           << std::endl;
 
     } catch (const std::exception& ex) {
         printError(ex.what(), ERROR);
+        return 1;
     }
 
     return 0;
