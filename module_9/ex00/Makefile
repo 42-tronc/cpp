@@ -106,6 +106,10 @@ valgrind: run
 run: all
 	@echo -e "\n\e[;1;33m* \e[21m\e[34mTesting with no file\e[0m\n"
 	@$(VALGRIND) ./$(NAME) || true
+	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with too many arguments\e[0m\n"
+	@$(VALGRIND) ./$(NAME) input.txt input.txt || true
+	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with an empty string\e[0m\n"
+	@$(VALGRIND) ./$(NAME) "" || true
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with a string\e[0m\n"
 	@$(VALGRIND) ./$(NAME) "Hello World" || true
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with missing file\e[0m\n"
