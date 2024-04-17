@@ -88,11 +88,20 @@ void checkDate(bool isDataCsv, const std::string& date) {
         throw std::runtime_error("date delimiter is not '-'");
 
     if (month < 1 || month > 12 || day < 1 || day > 31)
-        throw std::runtime_error("invalid date");
+        throw std::runtime_error("invalid month or day");
     if (year < 2009 || (!isDataCsv && year == 2009 && month == 1 && day < 3))
         throw std::runtime_error("date is before bitcoin creation date");
     if (!dateIsPast(year, month, day))
         throw std::runtime_error("date is in the future");
+
+    // Check the number of days in a month
+    if (month == 2 && day > 29 && (year % 4 == 0))
+        throw std::runtime_error("February has 29 days in a leap year");
+    if (month == 2 && day > 28 && (year % 4 != 0))
+        throw std::runtime_error("February has 28 days in a non-leap year");
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        throw std::runtime_error(
+            "April, June, September, and November have only 30 days");
 }
 
 void checkFileContent(const std::string& filename, bool isDataCsv = false) {
