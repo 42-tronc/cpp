@@ -87,6 +87,7 @@ int main(int ac, char** av) {
         printError("invalid number of arguments.");
         return 1;
     }
+
     try {
         checkFileExist(av[1]);
         checkFileExist("data.csv");
