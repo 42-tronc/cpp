@@ -9,26 +9,16 @@ void printError(const std::string& message, bool usage = true) {
         std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
 }
 
-// bool isParsedDateValid(const std::string& date) {
-//     std::istringstream iss(date);
-//     short year, month, day;
-//     char dash1, dash2;
+bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
+    if (isDataCsv && delim == ",")
+        return true;
+    else if (!isDataCsv && delim == "|")
+        return true;
+    else
+        throw std::runtime_error("invalid header delimiter (" + delim + ").");
 
-//     iss >> year >> dash1 >> month >> dash2 >> day;
-//     std::cout << "\e[1;32mParsed date: \e[;35m" << year << "\e[0m-"
-//               << "\e[35m" << month << "\e[;m-"
-//               << "\e[35m" << day << "\e[;m" << std::endl;
-//     std::cout << "DAY: " << day << std::endl;
-//     if (iss.fail() || dash1 != '-' || dash2 != '-') {
-//         return false;
-//     }
-
-//     if (year < 2009 || year > 2021) {
-//         return false;
-//     }
-
-//     return true;
-// }
+    return false;
+}
 
 void getDates(const std::string& filename) {
     std::ifstream file(filename.c_str());
