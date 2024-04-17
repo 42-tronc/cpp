@@ -75,6 +75,26 @@ bool dateIsPast(int year, int month, int day) {
     return true;
 }
 
+void checkDate(bool isDataCsv, const std::string& date) {
+    if (date.length() != 10)
+        throw std::runtime_error("date is not 10 characters long");
+
+    std::istringstream iss(date);
+    int year, month, day;
+    char delimiter, delimiter2;
+
+    iss >> year >> delimiter >> month >> delimiter2 >> day;
+    if (delimiter != '-' || delimiter2 != '-' || iss.fail())
+        throw std::runtime_error("date delimiter is not '-'");
+
+    if (month < 1 || month > 12 || day < 1 || day > 31)
+        throw std::runtime_error("invalid date");
+    if (year < 2009 || (!isDataCsv && year == 2009 && month == 1 && day < 3))
+        throw std::runtime_error("date is before bitcoin creation date");
+    if (!dateIsPast(year, month, day))
+        throw std::runtime_error("date is in the future");
+}
+
 void checkFileContent(const std::string& filename, bool isDataCsv = false) {
     std::ifstream file(filename.c_str());
     std::string line;
@@ -115,6 +135,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
             }
 
             checkFileDelimiter(isDataCsv, delimiter);
+            checkDate(isDataCsv, date);
         //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
         } catch (const std::runtime_error& ex) {
             if (isDataCsv)
