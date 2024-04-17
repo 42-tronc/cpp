@@ -8,6 +8,16 @@ void printError(const std::string& message, bool usage = true) {
     if (usage)
         std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
 }
+bool checkFileHeader(bool isDataCsv, std::string& line) {
+    if (isDataCsv && line == "date,exchange_rate")
+        return true;
+    else if (!isDataCsv && line == "date | value")
+        return true;
+    else
+        throw std::runtime_error("invalid header (" + line + ").");
+
+    return false;
+}
 
 bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
     if (isDataCsv && delim == ",")
