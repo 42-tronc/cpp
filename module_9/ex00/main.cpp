@@ -39,27 +39,43 @@ bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
     return false;
 }
 
-void getDates(const std::string& filename) {
+void checkFileContent(const std::string& filename, bool isDataCsv = false) {
     std::ifstream file(filename.c_str());
-    std::string line, date, pipe;
-    float value;
+    std::string line;
     bool isFirstLine = true;
 
+    // Check if the file is empty
+    if (file.peek() == std::ifstream::traits_type::eof() || !file.good())
+        throw std::runtime_error(filename + " is empty.");
+
     while (std::getline(file, line)) {
-        if (isFirstLine && line == "date | value") {
+        // Check the first line
+        if (isFirstLine && checkFileHeader(isDataCsv, line)) {
             isFirstLine = false;
             continue;
         }
 
         std::istringstream iss(line);
-        iss >> date >> pipe >> value;
+        std::string date, delimiter, valueStr;
+        float value = 0;
 
-        std::cout << "\e[1mDate: \e[;35m" << std::setw(10) << date
-                  << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) << value
-                  << "\e[0m iss: \e[31m" << iss.fail() << "\e[0m pipe: `\e[31m"
-                  << pipe << "\e[0m`" << std::endl;
-        if (iss.fail() || pipe != "|") {
-            printError("invalid file format.", false);
+        if (isDataCsv) {
+            std::getline(iss, date, ',');
+            std::getline(iss, valueStr);
+            delimiter = line.at(10);
+        } else
+            iss >> date >> delimiter >> value;
+
+        // std::cout << "\e[1mDate: \e[;35m" << std::setw(10) << date
+        //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
+        //           valueStr
+        //           << "\e[0m iss: \e[31m" << iss.fail()
+        //           << "\e[0m delimiter: `\e[31m" << delimiter << "\e[0m`"
+        //           << std::endl;
+
+        if (iss.fail() || !checkFileDelimiter(isDataCsv, delimiter)) {
+            printError("invalid file format (\e[3;30m" + line + "\e[31m).\e[0m",
+                false);
         }
     }
 }
@@ -69,18 +85,20 @@ int main(int ac, char** av) {
         printError("invalid number of arguments.");
         return 1;
     }
-    if (BitcoinExchange::isFileMissing("data.csv")) {
-        printError("data.csv is missing.");
-        return 1;
-    } else if (BitcoinExchange::isFileMissing(av[1])) {
-        printError(std::string(av[1]) + " is missing.");
-        return 1;
-    }
-    // isParsedDateValid("2021-01-01");
-    getDates(av[1]);
+    try {
+        checkFileExist("data.csv");
+        checkFileExist(av[1]);
+        checkFileContent("data.csv", true);
+        std::cout << "\e[1;32mSuccess: \e[;32mdata.csv is valid.\e[0m"
+                  << std::endl;
 
-    std::cout << "\e[1;32mSuccess: \e[;32m" << av[1] << " is valid.\e[0m"
-              << std::endl;
+        checkFileContent(av[1]);
+        std::cout << "\e[1;32mSuccess: \e[;32m" << av[1] << " is valid.\e[0m"
+                  << std::endl;
+
+    } catch (const std::exception& ex) {
+        std::cerr << ex.what() << '\n';
+    }
 
     return 0;
 }
