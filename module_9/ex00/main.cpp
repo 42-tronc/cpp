@@ -4,8 +4,26 @@
 
 #include "BitcoinExchange.hpp"
 
-void printError(const std::string& message, bool usage = true) {
-    std::cerr << "\e[1;31mError: \e[;31m" << message << "\e[0m" << std::endl;
+// enum for the error level
+enum ErrorLevel { ERROR = 1, WARNING = 2 };
+
+void printError(const std::string& message, short level,
+    const std::string& details = "", bool usage = true) {
+    std::string colour, prefix;
+    if (level == ERROR) {
+        colour = "\e[;31m";
+        prefix = "\e[1;31mError: " + colour;
+    } else if (level == WARNING) {
+        colour = "\e[;33m";
+        prefix = "\e[1;33mWarning: \e[;33m";
+    }
+
+    if (details.empty())
+        std::cerr << prefix << message << "\e[0m" << std::endl;
+    else
+        std::cerr << prefix << message << " (\e[3;30m" << details << colour
+                  << ").\e[0m" << std::endl;
+
     if (usage)
         std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
 }
@@ -75,16 +93,17 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
         //           << "\e[0m delimiter: `\e[31m" << delimiter << "\e[0m`"
         //           << std::endl;
 
-        if (iss.fail() || !checkFileDelimiter(isDataCsv, delimiter)) {
-            printError("invalid file format (\e[3;30m" + line + "\e[31m).\e[0m",
-                false);
+        if (iss.fail() || !checkFileDelimiter(isDataCsv, delimiter) ||
+            date.empty()) {
+            printError("Your error message here", ERROR, false);
+            // printError("invalid file format", WARNING, line, false);
         }
     }
 }
 
 int main(int ac, char** av) {
     if (ac != 2 || !strlen(av[1])) {
-        printError("invalid number of arguments.");
+        printError("invalid number of arguments.", ERROR);
         return 1;
     }
 
@@ -99,7 +118,7 @@ int main(int ac, char** av) {
                   << std::endl;
 
     } catch (const std::exception& ex) {
-        printError(ex.what());
+        printError(ex.what(), ERROR);
     }
 
     return 0;
