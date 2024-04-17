@@ -95,6 +95,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
         std::string date, delimiter, valueStr;
         float value = 0;
 
+        try {
         if (isDataCsv) {
             std::getline(iss, date, ',');
             std::getline(iss, valueStr);
@@ -106,15 +107,10 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
 
         // std::cout << "\e[1mDate: \e[;35m" << std::setw(10) << date
         //           << "\e[0m | \e[1mValue: \e[;35m" << std::setw(3) <<
-        //           valueStr
-        //           << "\e[0m iss: \e[31m" << iss.fail()
-        //           << "\e[0m delimiter: `\e[31m" << delimiter << "\e[0m`"
-        //           << std::endl;
-
-        if (iss.fail() || !checkFileDelimiter(isDataCsv, delimiter) ||
-            date.empty()) {
-            printError("Your error message here", ERROR, false);
-            // printError("invalid file format", WARNING, line, false);
+        } catch (const std::runtime_error& ex) {
+            if (isDataCsv)
+                throw;
+            printError(ex.what(), WARNING, line, false);
         }
     }
 }
