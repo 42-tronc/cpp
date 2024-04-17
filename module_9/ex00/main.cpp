@@ -18,11 +18,10 @@ void printError(const std::string& message, short level,
         prefix = "\e[1;33mWarning: \e[;33m";
     }
 
-    if (details.empty())
-        std::cerr << prefix << message << "\e[0m" << std::endl;
-    else
-        std::cerr << prefix << message << " (\e[3;30m" << details << colour
-                  << ").\e[0m" << std::endl;
+    std::cerr << prefix << message;
+    if (!details.empty())
+        std::cerr << " (\e[3;30m" << details << colour << ")";
+    std::cerr << ".\e[0m" << std::endl;
 
     if (usage)
         std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
