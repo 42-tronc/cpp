@@ -4,6 +4,7 @@
 #include <cstring>   // strlen
 #include <ctime>     // time_t, localtime
 #include <fstream>   // ifstream
+#include <iomanip>   // setw
 #include <iostream>  // cout, cerr
 #include <map>       // map
 #include <sstream>   // istringstream

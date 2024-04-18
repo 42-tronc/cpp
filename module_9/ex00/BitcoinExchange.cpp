@@ -131,6 +131,15 @@ void BitcoinExchange::processLine(const std::string& line, bool isDataCsv) {
         if (!isDataCsv && (value < 0 || value > 1000))
             throw std::runtime_error("value is not between 0 and 1000");
 
+        if (isDataCsv)
+            addEntry(date, value);
+        else {
+            float rate = getRate(date);
+            std::cout << "\e[95m \e[;m" << date << " | \e[93m\e[;m "
+                      << std::setw(3) << value << " | \e[92m\e[;m "
+                      << value * rate << std::endl;
+        }
+
     } catch (const std::runtime_error& ex) {
         if (isDataCsv)
             throw;
