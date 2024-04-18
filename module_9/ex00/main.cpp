@@ -57,7 +57,7 @@ bool checkFileDelimiter(bool isDataCsv, std::string& delim) {
     return false;
 }
 
-bool dateIsPast(int year, int month, int day) {
+bool isFutureDate(int year, int month, int day) {
     std::time_t now = std::time(0);
     std::tm* localTime = std::localtime(&now);
 
@@ -65,14 +65,11 @@ bool dateIsPast(int year, int month, int day) {
     int currentMonth = localTime->tm_mon + 1;
     int currentDay = localTime->tm_mday;
 
-    if (year > currentYear)
-        return false;
-    if (year == currentYear && month > currentMonth)
-        return false;
-    if (year == currentYear && month == currentMonth && day > currentDay)
-        return false;
+    if (year > currentYear || (year == currentYear && month > currentMonth) ||
+        (year == currentYear && month == currentMonth && day > currentDay))
+        return true;
 
-    return true;
+    return false;
 }
 
 void checkDate(bool isDataCsv, const std::string& date) {
@@ -91,7 +88,7 @@ void checkDate(bool isDataCsv, const std::string& date) {
         throw std::runtime_error("invalid month or day");
     if (year < 2009 || (!isDataCsv && year == 2009 && month == 1 && day < 3))
         throw std::runtime_error("date is before bitcoin creation date");
-    if (!dateIsPast(year, month, day))
+    if (isFutureDate(year, month, day))
         throw std::runtime_error("date is in the future");
 
     // Check the number of days in a month
