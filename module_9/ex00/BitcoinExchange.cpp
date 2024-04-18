@@ -112,7 +112,7 @@ void getData(bool isDataCsv, std::string& date, float& value,
 
 void processLine(const std::string& line, bool isDataCsv) {
     std::string date, delimiter;
-    float value = 0;
+    double value = 0;
 
     try {
         if (line.empty())
