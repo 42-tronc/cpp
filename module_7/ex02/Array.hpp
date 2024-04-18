@@ -6,8 +6,16 @@
 template <typename T>
 class Array {
 public:
-    Array() : array(new T[0]), size(0) {}
-    Array(size_t n) : array(new T[n]), size(n) {}
+    Array() : array(new T[0]), size(0) {
+        for (size_t i = 0; i < size; i++) {
+            array[i] = T();
+        }
+    }
+    Array(size_t n) : array(new T[n]), size(n) {
+        for (size_t i = 0; i < size; i++) {
+            array[i] = T();
+        }
+    }
     Array(const Array& other) : array(new T[other.size]), size(other.size) {
         for (size_t i = 0; i < size; i++) {
             array[i] = other.array[i];
