@@ -38,6 +38,7 @@ public:
 
     BitcoinExchange &operator=(const BitcoinExchange &other);
 
+    void checkFileContent(const std::string &filename, bool isDataCsv = false);
     void processLine(const std::string &line, bool isDataCsv);
 
     void addEntry(const std::string &date, float exchangeRate);

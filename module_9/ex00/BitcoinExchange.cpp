@@ -132,7 +132,8 @@ void BitcoinExchange::processLine(const std::string& line, bool isDataCsv) {
     }
 }
 
-void checkFileContent(const std::string& filename, bool isDataCsv = false) {
+void BitcoinExchange::checkFileContent(
+    const std::string& filename, bool isDataCsv) {
     std::ifstream file(filename.c_str());
     std::string line;
     bool isFirstLine = true;
