@@ -110,7 +110,7 @@ void getData(bool isDataCsv, std::string& date, double& value,
     }
 }
 
-void processLine(const std::string& line, bool isDataCsv) {
+void BitcoinExchange::processLine(const std::string& line, bool isDataCsv) {
     std::string date, delimiter;
     double value = 0;
 
