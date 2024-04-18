@@ -57,6 +57,7 @@ CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
 VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes --track-origins=yes
+VALGRIND_FILE = valgrind_output.txt
 
 RM := rm -rf
 USER := $(shell whoami)
@@ -100,10 +101,23 @@ re: fclean
 debug: C_FLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
 
+# Define a function to check for errors or leaks in Valgrind output
+define check_valgrind_output
+	@if grep -q "ERROR SUMMARY: [1-9]" $1 || grep -q "LEAK SUMMARY: [1-9]" $1; then \
+		cat $1; \
+		echo -e "$(BG_RED) LEAK: $(RESET)$(FG_RED)Valgrind found errors or leaks.$(RESET)"; \
+	else \
+		echo -e "$(BG_GREEN) NO LEAK:$(RESET) $(FG_GREEN)Valgrind found no errors or leaks.$(RESET)"; \
+	fi
+	@rm -f $1
+endef
+
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
+valgrind: VALGRIND_SUFFIX = > $(VALGRIND_FILE) 2>&1
 valgrind: run
+	$(call check_valgrind_output, $(VALGRIND_FILE))
 
 run: all
-	$(VALGRIND) ./$(NAME) $(ARGS)
+	$(VALGRIND) ./$(NAME) $(ARGS) $(VALGRIND_SUFFIX)
 
-.PHONY: all clean fclean re debug valgrind test
+.PHONY: all clean fclean re debug valgrind run

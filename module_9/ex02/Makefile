@@ -57,6 +57,7 @@ CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
 VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes --track-origins=yes
+VALGRIND_FILE = valgrind_output.txt
 
 RM := rm -rf
 USER := $(shell whoami)
