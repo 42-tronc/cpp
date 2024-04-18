@@ -16,6 +16,11 @@ bool BitcoinExchange::isFileMissing(const std::string& filename) {
     return !file.good();
 }
 
+void BitcoinExchange::addEntry(const std::string& date, float exchangeRate) {
+    this->data[date] = exchangeRate;
+    std::cout << "Added entry: " << date << " " << exchangeRate << std::endl;
+}
+
 bool checkFileHeader(bool isDataCsv, std::string& line) {
     if (isDataCsv && line == "date,exchange_rate")
         return true;

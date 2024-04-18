@@ -40,6 +40,8 @@ public:
 
     static bool isFileMissing(const std::string &filename);
 
+    void addEntry(const std::string &date, float exchangeRate);
+
 private:
     BitcoinExchange();
     std::map<std::string, float> data;
