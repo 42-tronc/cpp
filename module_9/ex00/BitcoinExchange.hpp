@@ -42,6 +42,7 @@ public:
     void processLine(const std::string &line, bool isDataCsv);
 
     void addEntry(const std::string &date, float exchangeRate);
+    float getRate(std::string &date);
 
 private:
     BitcoinExchange();
