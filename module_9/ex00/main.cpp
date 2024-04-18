@@ -110,7 +110,7 @@ void checkFileContent(const std::string& filename, bool isDataCsv = false) {
     bool isFirstLine = true;
 
     // Check if the file is empty
-    if (file.peek() == std::ifstream::traits_type::eof() || !file.good())
+    if (file.peek() == EOF || !file.good())
         throw std::runtime_error(filename + " is empty");
 
     while (std::getline(file, line)) {
