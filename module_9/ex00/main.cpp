@@ -13,10 +13,10 @@ void printError(const std::string& message, short level,
     std::string colour, prefix;
     if (level == ERROR) {
         colour = "\e[;31m";
-        prefix = "\e[1;31mError: " + colour;
+        prefix = "\e[1;31m[Error] " + colour;
     } else if (level == WARNING) {
         colour = "\e[;33m";
-        prefix = "\e[1;33mWarning: \e[;33m";
+        prefix = "\e[1;33m[Warning] " + colour;
     }
 
     std::cerr << prefix << message;
