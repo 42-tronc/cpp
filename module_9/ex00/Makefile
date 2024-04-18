@@ -133,6 +133,8 @@ run: all
 	@$(VALGRIND) ./$(NAME) empty.txt $(VALGRIND_SUFFIX) || true
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with input.txt file\e[0m\n"
 	@$(VALGRIND) ./$(NAME) input.txt $(VALGRIND_SUFFIX) || true
+	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with clean.txt file\e[0m\n"
+	@$(VALGRIND) ./$(NAME) clean.txt $(VALGRIND_SUFFIX) || true
 
 
 .PHONY: all clean fclean re debug valgrind run
