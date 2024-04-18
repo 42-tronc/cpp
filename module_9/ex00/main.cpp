@@ -1,32 +1,4 @@
-#include <cstring>
-#include <ctime>
-#include <iomanip>
-#include <iostream>
-
 #include "BitcoinExchange.hpp"
-
-// enum for the error level
-enum ErrorLevel { ERROR = 1, WARNING = 2 };
-
-void printError(const std::string& message, short level,
-    const std::string& details = "", bool usage = true) {
-    std::string colour, prefix;
-    if (level == ERROR) {
-        colour = "\e[;31m";
-        prefix = "\e[1;31m[Error] " + colour;
-    } else if (level == WARNING) {
-        colour = "\e[;33m";
-        prefix = "\e[1;33m[Warning] " + colour;
-    }
-
-    std::cerr << prefix << message;
-    if (!details.empty())
-        std::cerr << " (\e[3;30m" << details << colour << ")";
-    std::cerr << ".\e[0m" << std::endl;
-
-    if (usage)
-        std::cerr << "\n\e[1;33mUsage: \e[;33m./btc <file>\e[0m" << std::endl;
-}
 
 void checkFileExist(const std::string& filename) {
     std::ifstream file(filename.c_str());
