@@ -165,12 +165,12 @@ int main(int ac, char** av) {
     }
 
     try {
-        checkFileExist(av[1]);
         checkFileExist("data.csv");
-        checkFileContent(av[1]);
+        checkFileExist(av[1]);
 
         // BitcoinExchange btc(av[1]);
         checkFileContent("data.csv", true);
+        checkFileContent(av[1]);
 
     } catch (const std::exception& ex) {
         printError(ex.what(), ERROR);
