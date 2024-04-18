@@ -87,7 +87,7 @@ void checkDate(bool isDataCsv, const std::string& date) {
             "April, June, September, and November have only 30 days");
 }
 
-void getData(bool isDataCsv, std::string& date, float& value,
+void getData(bool isDataCsv, std::string& date, double& value,
     const std::string& line, std::string& delimiter) {
     std::istringstream iss(line);
 
