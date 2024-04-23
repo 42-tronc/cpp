@@ -68,9 +68,10 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := mutantstack
-HEADER := MutantStack.hpp
-SRC := main.cpp
+NAME := RPN
+HEADER := RPN.hpp
+SRC := main.cpp RPN.cpp
+
 
 # -------------- RECIPES --------------
 all: $(NAME) | $(OBJ_DIR)
@@ -101,10 +102,40 @@ re: fclean
 debug: C_FLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
 
+# Define a function to check for errors or leaks in Valgrind output
+define check_valgrind_output
+	@if grep -q "ERROR SUMMARY: [1-9]" $1 || grep -q "LEAK SUMMARY: [1-9]" $1; then \
+		cat $1; \
+		echo -e "$(BG_RED) LEAK:$(RESET) $(FG_RED)Valgrind found errors or leaks.$(RESET)"; \
+	else \
+		echo -e "$(BG_GREEN) NO LEAK:$(RESET) $(FG_GREEN)Valgrind found no errors or leaks.$(RESET)"; \
+	fi
+	@rm -f $1
+endef
+
+# printTest in Makefile
+define printTest
+    @echo -e "\n\e[1;33m* \e[21m\e[34mTesting with$(1)\e[0m\n"
+endef
+
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
+valgrind: VALGRIND_SUFFIX = > $(VALGRIND_FILE) 2>&1
 valgrind: run
+	$(call check_valgrind_output, $(VALGRIND_FILE))
 
 run: all
-	$(VALGRIND) ./$(NAME) $(ARGS)
+	$(call printTest, no arguments)
+	@$(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
+	$(call printTest, "empty string")
+	@$(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "too few arguments")
+	@$(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "invalid character")
+	@$(VALGRIND) ./$(NAME) "1 2 3 ;" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "invalid digit")
+	@$(VALGRIND) ./$(NAME) "1 2 3 40" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "missing operator")
+	@$(VALGRIND) ./$(NAME) "1 2 3" $(VALGRIND_SUFFIX) || true
 
-.PHONY: all clean fclean re debug valgrind test
+
+.PHONY: all clean fclean re debug valgrind run
