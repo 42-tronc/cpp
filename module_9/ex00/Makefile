@@ -131,10 +131,13 @@ run: all
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with empty file\e[0m\n"
 	@touch empty.txt
 	@$(VALGRIND) ./$(NAME) empty.txt $(VALGRIND_SUFFIX) || true
+	@rm -f empty.txt
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with input.txt file\e[0m\n"
 	@$(VALGRIND) ./$(NAME) input.txt $(VALGRIND_SUFFIX) || true
 	@echo -e "\n\e[1;33m* \e[21m\e[34mTesting with clean.txt file\e[0m\n"
+	@echo -e "date | value\n2011-01-03 | 3\n2011-01-03 | 2\n2011-01-03 | 1\n2011-01-03 | 1.2\n2011-01-09 | 1\n2012-01-11 | 1\n2023-02-28 | 1\n2023-01-31 | 1\n2023-05-31 | 1\n2024-02-28 | 1\n2024-02-29 | 1" > clean.txt
 	@$(VALGRIND) ./$(NAME) clean.txt $(VALGRIND_SUFFIX) || true
+	@rm -f clean.txt
 
 
 .PHONY: all clean fclean re debug valgrind run
