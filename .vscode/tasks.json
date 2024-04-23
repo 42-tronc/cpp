@@ -60,7 +60,16 @@
 				"kind": "test",
 				"isDefault": true
 			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
 			"detail": "maplepy: compile the project with the makefile and run it",
+			"problemMatcher": []
 		},
 		{
 			"type": "process",
@@ -76,7 +85,7 @@
 				"kind": "test",
 				"isDefault": false
 			},
-			"detail": "maplepy: compile the project with the makefile and run it with valgrind",
-		},
+			"detail": "maplepy: compile the project with the makefile and run it with valgrind"
+		}
 	]
 }
