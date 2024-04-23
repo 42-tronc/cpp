@@ -12,6 +12,8 @@ RPN::RPN(const RPN& other) {
 RPN::~RPN() {}
 
 RPN& RPN::operator=(const RPN& other) {
+    if (this == &other)
+        return *this;
     return *this;
 }
 
