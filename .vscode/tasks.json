@@ -85,6 +85,14 @@
 				"kind": "test",
 				"isDefault": false
 			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
 			"detail": "maplepy: compile the project with the makefile and run it with valgrind"
 		}
 	]
