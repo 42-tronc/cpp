@@ -5,7 +5,7 @@
 #include <ctime>     // time_t, localtime
 #include <fstream>   // ifstream
 #include <iomanip>   // setw
-#include <iostream>  // cout, cerr
+#include <iostream>  // cout, cerr, endl
 #include <map>       // map
 #include <sstream>   // istringstream
 
@@ -48,7 +48,6 @@ public:
 private:
     BitcoinExchange();
     std::map<std::string, float> data;
-    // std::string filename;
 };
 
 #endif
