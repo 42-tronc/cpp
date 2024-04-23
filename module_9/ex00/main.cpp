@@ -18,15 +18,11 @@ int main(int ac, char** av) {
         checkFileExist(av[1]);
 
         BitcoinExchange btc(av[1]);
-        // checkFileContent("data.csv", true);
-        // checkFileContent(av[1]);
 
     } catch (const std::exception& ex) {
         printError(ex.what(), ERROR);
         return 1;
     }
-    std::cout << "\n\e[1;32mSuccess: \e[;32mboth files are valid.\e[0m"
-              << std::endl;
 
     return 0;
 }
