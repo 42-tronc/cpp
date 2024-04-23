@@ -125,17 +125,30 @@ valgrind: run
 
 run: all
 	$(call printTest, no arguments)
-	@$(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
+	$(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
 	$(call printTest, "empty string")
-	@$(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
+	$(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
 	$(call printTest, "too few arguments")
-	@$(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
+	$(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
 	$(call printTest, "invalid character")
-	@$(VALGRIND) ./$(NAME) "1 2 3 ;" $(VALGRIND_SUFFIX) || true
+	$(VALGRIND) ./$(NAME) "1 2 3 ;" $(VALGRIND_SUFFIX) || true
 	$(call printTest, "invalid digit")
-	@$(VALGRIND) ./$(NAME) "1 2 3 40" $(VALGRIND_SUFFIX) || true
-	$(call printTest, "missing operator")
-	@$(VALGRIND) ./$(NAME) "1 2 3" $(VALGRIND_SUFFIX) || true
-
+	$(VALGRIND) ./$(NAME) "1 2 3 40" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "missing one operator")
+	$(VALGRIND) ./$(NAME) "1 2 3 +" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "missing all operators")
+	$(VALGRIND) ./$(NAME) "1 2 3" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "no digit")
+	$(VALGRIND) ./$(NAME) "+ -" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "missing digit")
+	$(VALGRIND) ./$(NAME) "1 2 + +" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "division by zero")
+	$(VALGRIND) ./$(NAME) "1 0 /" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "too many spaces")
+	$(VALGRIND) ./$(NAME) "1   2 3 + -" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "valid expression")
+	$(VALGRIND) ./$(NAME) "1 2 3 + -" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "valid expression")
+	$(VALGRIND) ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +" $(VALGRIND_SUFFIX) || true
 
 .PHONY: all clean fclean re debug valgrind run
