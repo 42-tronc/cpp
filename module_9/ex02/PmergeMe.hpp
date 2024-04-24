@@ -3,6 +3,7 @@
 
 #include <deque>
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 inline void printError(const std::string &message) {
@@ -18,13 +19,14 @@ inline void printError(const std::string &message) {
 
 class PmergeMe {
 public:
-    PmergeMe();
+    PmergeMe(char **av);
     PmergeMe(const PmergeMe &other);
     ~PmergeMe();
 
     PmergeMe &operator=(const PmergeMe &other);
 
 private:
+    PmergeMe();
     std::vector<int> vector;
     std::deque<int> deque;
     double execTimeVector;

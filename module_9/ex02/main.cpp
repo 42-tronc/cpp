@@ -29,6 +29,7 @@ int main(int ac, char* av[]) {
             throw std::invalid_argument("invalid number of arguments");
         isValidInput(ac, av);
 
+        PmergeMe pmergeMe(av);
     } catch (const std::exception& ex) {
         printError(ex.what());
         return 1;
