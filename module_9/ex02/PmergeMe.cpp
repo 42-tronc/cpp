@@ -31,11 +31,34 @@ void printBothContainers(
     printContainer(deque);
 }
 
+// FIXME: this is not the correct algorithm
+template <typename Container>
+void fordJohnsonSort(Container& container) {
+    for (typename Container::size_type i = 1; i < container.size(); ++i) {
+        typename Container::value_type key = container[i];
+        typename Container::size_type j = i;
+
+        // Binary search to find the correct position for key
+
+        while (j > 0 && container[j - 1] > key) {
+            container[j] = container[j - 1];
+            --j;
+        }
+        container[j] = key;
+    }
+}
+
 PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     fillContainer(av, vector);
     fillContainer(av, deque);
 
     std::cout << "\e[1;33mUnsorted list:\e[0m" << std::endl;
+    printBothContainers(vector, deque);
+
+    fordJohnsonSort(vector);
+    fordJohnsonSort(deque);
+
+    std::cout << "\e[1;33mSorted list:\e[0m" << std::endl;
     printBothContainers(vector, deque);
 }
 
