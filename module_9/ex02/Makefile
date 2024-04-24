@@ -139,6 +139,6 @@ run: all
 	$(call printTest, "10 random numbers")
 	$(VALGRIND) ./$(NAME) $(shell shuf --head-count=10 --input-range=1-100) $(VALGRIND_SUFFIX)
 	$(call printTest, "3001 numbers")
-	@$(VALGRIND) ./$(NAME) $(shell seq 1 3001) $(VALGRIND_SUFFIX)
+	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=3000 --input-range=1-10000) $(VALGRIND_SUFFIX)
 
 .PHONY: all clean fclean re debug valgrind run
