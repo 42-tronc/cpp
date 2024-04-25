@@ -25,9 +25,9 @@ void fillContainer(char** av, T& container) {
 void printBothContainers(
     const std::vector<int>& vector, const std::deque<int>& deque) {
     (void)vector;
-    // std::cout << "Vector: ";
-    // printContainer(vector);
-    std::cout << "Deque: ";
+    std::cout << "\e[35mVector: \e[;m";
+    printContainer(vector);
+    std::cout << "\e[35mDeque: \e[;m";
     printContainer(deque);
 }
 
