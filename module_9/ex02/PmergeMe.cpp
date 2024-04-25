@@ -60,7 +60,8 @@ void splitCollection(Container& container, Pairs& pairs) {
     int save = -1;
     if (container.size() % 2 != 0) {
         max--;
-        save = container[max];
+        // save = container[max];
+        pairs.push_back(std::make_pair(container[max], -1));
         container.pop_back();
     }
 
@@ -69,6 +70,7 @@ void splitCollection(Container& container, Pairs& pairs) {
         container.pop_back();
         container.pop_back();
     }
+    printPairs(pairs);
 
     // If the size is odd, push the last element back
     if (save != -1)
