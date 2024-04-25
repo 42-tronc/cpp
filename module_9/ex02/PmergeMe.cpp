@@ -61,6 +61,12 @@ void pairSort(Pairs& pairs) {
             std::swap(pairs[i].first, pairs[i].second);
 }
 
+template <typename Container, typename Pairs>
+void pushLargestElementBack(Container& container, Pairs& pairs) {
+    for (size_t i = 0; i < pairs.size(); i++)
+        container.push_back(pairs[i].first);
+}
+
 // TODO: REMOVE ME
 template <typename Pairs>
 void printPairs(const Pairs& pairs) {
@@ -111,6 +117,20 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::sort(dequePairs.begin(), dequePairs.end());
     std::sort(vectorPairs.begin(), vectorPairs.end());
     printPairs(dequePairs);
+
+    //////////////////////////////////////////
+    // Push the largest element of each pair back to the container
+    std::cout << "\n\e[34mPush the largest element of each pair back to the "
+                 "container\e[;m\n";
+    std::cout << "\e[35mVector: \e[;m" << std::endl;
+    pushLargestElementBack(vector, vectorPairs);
+    std::sort(vector.begin(), vector.end());
+    printContainer(vector);
+
+    std::cout << "\n\e[35mDeque: \e[;m" << std::endl;
+    pushLargestElementBack(deque, dequePairs);
+    std::sort(deque.begin(), deque.end());
+    printContainer(deque);
 
     printBothContainers(vector, deque);
 }
