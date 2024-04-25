@@ -95,66 +95,33 @@ void pushRemaining(Container& container, Pairs& pairs) {
             pairs[i].second);
 }
 
-PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
-    //////////////////////////////////////////
-    // Fill both containers with the input arguments
-    std::cout << "\e[34mFill both containers with the input arguments\e[;m\n";
-    fillContainer(av, vector);
-    fillContainer(av, deque);
+template <typename Container>
+void mergeInsertSort(char** av, Container& container) {
+    // Fill the container with the input arguments
+    fillContainer(av, container);
 
-    //////////////////////////////////////////
     // Group the elements in n/2 pairs
-    std::cout << "\n\e[34mGroup the elements in n/2 pairs\e[;m\n";
-    std::vector<std::pair<int, int> > vectorPairs;
-    splitCollection(vector, vectorPairs);
+    std::vector<std::pair<int, int> > pairs;
+    // std::deque<std::pair<int, int> > dequePairs;
+    splitCollection(container, pairs);
 
-    std::deque<std::pair<int, int> > dequePairs;
-    splitCollection(deque, dequePairs);
-
-    printBothPairs(vectorPairs, dequePairs);
-
-    //////////////////////////////////////////
     // Compare the pairs to find the largest element
-    std::cout << "\n\e[34mCompare the pairs to find the largest element\e[;m\n";
-    std::cout << "\e[35mVector pairs: \e[;m" << std::endl;
-    pairSort(vectorPairs);
-    printPairs(vectorPairs);
-    std::cout << "on the side: ";
-    printContainer(vector);
+    pairSort(pairs);
 
-    std::cout << "\n\e[35mDeque pairs: \e[;m" << std::endl;
-    pairSort(dequePairs);
-    printPairs(dequePairs);
-    std::cout << "on the side: ";
-    printContainer(deque);
-
-    //////////////////////////////////////////
     // Sort the pair container
-    std::cout << "\n\e[34mSort the pair container\e[;m\n";
-    std::sort(dequePairs.begin(), dequePairs.end());
-    std::sort(vectorPairs.begin(), vectorPairs.end());
-    printBothPairs(vectorPairs, dequePairs);
+    std::sort(pairs.begin(), pairs.end());
 
-    //////////////////////////////////////////
     // Push the largest element of each pair back to the container
-    std::cout << "\n\e[34mPush the largest element of each pair back to the "
-                 "container\e[;m\n";
-    std::cout << "\e[35mVector: \e[;m" << std::endl;
-    pushLargestElementBack(vector, vectorPairs);
-    std::sort(vector.begin(), vector.end());
-    printContainer(vector);
+    pushLargestElementBack(container, pairs);
 
-    std::cout << "\n\e[35mDeque: \e[;m" << std::endl;
-    pushLargestElementBack(deque, dequePairs);
-    std::sort(deque.begin(), deque.end());
-    printContainer(deque);
-
-    //////////////////////////////////////////
     // Insert at the right position the remaining elements from the pair
-    std::cout << "\n\e[34mInsert the remaining elements from the pair "
-                 "container\e[;m\n";
-    pushRemaining(vector, vectorPairs);
-    pushRemaining(deque, dequePairs);
+    pushRemaining(container, pairs);
+}
+
+PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
+    mergeInsertSort(av, vector);
+    mergeInsertSort(av, deque);
+
     printBothContainers(vector, deque);
 }
 
