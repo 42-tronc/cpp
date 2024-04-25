@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "PmergeMe.hpp"
 
@@ -20,6 +21,14 @@ void isValidInput(int ac, char* av[]) {
             if (str == av[j])
                 throw std::invalid_argument("duplicate argument (" + str + ")");
         }
+
+        std::istringstream iss(str);
+        long num;
+        iss >> num;
+        if (iss.fail())
+            throw std::invalid_argument("invalid argument (" + str + ")");
+        if (num > std::numeric_limits<int>::max())
+            throw std::invalid_argument("number is over the int limit");
     }
 }
 
