@@ -105,6 +105,13 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::cout << "on the side: ";
     printContainer(deque);
 
+    //////////////////////////////////////////
+    // Sort the pair container
+    std::cout << "\n\e[34mSort the pair container\e[;m\n";
+    std::sort(dequePairs.begin(), dequePairs.end());
+    std::sort(vectorPairs.begin(), vectorPairs.end());
+    printPairs(dequePairs);
+
     printBothContainers(vector, deque);
 }
 
