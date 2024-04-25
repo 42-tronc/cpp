@@ -89,10 +89,25 @@ void pushLargestElementBack(Container& container, Pairs& pairs) {
 
 template <typename Container, typename Pairs>
 void pushRemaining(Container& container, Pairs& pairs) {
-    for (size_t i = 0; i < pairs.size(); i++)
-        container.insert(std::lower_bound(container.begin(), container.end(),
-                             pairs[i].second),
-            pairs[i].second);
+    for (size_t i = 0; i < pairs.size(); i++) {
+        // Determine the maximum position for insertion based on the first
+        // element of the pair
+        typename Container::iterator maxPos =
+            container.begin() + pairs[i].first;
+
+        // Ensure maxPos does not exceed the end of the container
+        if (maxPos > container.end()) {
+            maxPos = container.end();
+        }
+
+        // Find the position to insert pairs[i].second in the sorted container,
+        // up to maxPos
+        typename Container::iterator it =
+            std::lower_bound(container.begin(), maxPos, pairs[i].second);
+
+        // Insert pairs[i].second at the found position
+        container.insert(it, pairs[i].second);
+    }
 }
 
 template <typename Container>
