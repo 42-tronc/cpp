@@ -119,7 +119,7 @@ define printTest
 endef
 
 valgrind: VALGRIND = valgrind $(VALGRIND_FLAGS)
-valgrind: VALGRIND_SUFFIX = > $(VALGRIND_FILE) 2>&1
+valgrind: VALGRIND_SUFFIX = >> $(VALGRIND_FILE) 2>&1
 valgrind: run
 	$(call check_valgrind_output, $(VALGRIND_FILE))
 
