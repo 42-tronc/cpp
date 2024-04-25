@@ -31,6 +31,29 @@ void printBothContainers(
     printContainer(deque);
 }
 
+template <typename Container, typename Pairs>
+void splitCollection(Container& container, Pairs& pairs) {
+    size_t max = container.size();
+
+    // If the size is odd, save it and pop it
+    int save = -1;
+    if (container.size() % 2 != 0) {
+        max--;
+        save = container[max];
+        container.pop_back();
+    }
+
+    for (size_t i = 0; i < max; i += 2) {
+        pairs.push_back(std::make_pair(container[i], container[i + 1]));
+        container.pop_back();
+        container.pop_back();
+    }
+
+    // If the size is odd, push the last element back
+    if (save != -1)
+        container.push_back(save);
+}
+
 // TODO: REMOVE ME
 template <typename Pairs>
 void printPairs(const Pairs& pairs) {
@@ -41,16 +64,25 @@ void printPairs(const Pairs& pairs) {
 }
 
 PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
+    //////////////////////////////////////////
+    // Fill both containers with the input arguments
+    std::cout << "\e[34mFill both containers with the input arguments\e[;m\n";
     fillContainer(av, vector);
     fillContainer(av, deque);
 
-    std::cout << "\e[1;33mUnsorted list:\e[0m" << std::endl;
-    printBothContainers(vector, deque);
+    //////////////////////////////////////////
+    // Group the elements in n/2 pairs
+    std::cout << "\n\e[34mGroup the elements in n/2 pairs\e[;m\n";
+    std::cout << "\e[35mVector pairs: \e[;m" << std::endl;
+    std::vector<std::pair<int, int> > vectorPairs;
+    splitCollection(vector, vectorPairs);
+    printPairs(vectorPairs);
 
-    fordJohnsonSort(vector);
-    fordJohnsonSort(deque);
+    std::cout << "\n\e[35mDeque pairs: \e[;m" << std::endl;
+    std::deque<std::pair<int, int> > dequePairs;
+    splitCollection(deque, dequePairs);
+    printPairs(dequePairs);
 
-    std::cout << "\e[1;33mSorted list:\e[0m" << std::endl;
     printBothContainers(vector, deque);
 }
 
