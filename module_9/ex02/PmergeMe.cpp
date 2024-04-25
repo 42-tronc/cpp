@@ -54,6 +54,13 @@ void splitCollection(Container& container, Pairs& pairs) {
         container.push_back(save);
 }
 
+template <typename Pairs>
+void pairSort(Pairs& pairs) {
+    for (size_t i = 0; i < pairs.size(); i++)
+        if (pairs[i].first < pairs[i].second)
+            std::swap(pairs[i].first, pairs[i].second);
+}
+
 // TODO: REMOVE ME
 template <typename Pairs>
 void printPairs(const Pairs& pairs) {
@@ -82,6 +89,21 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::deque<std::pair<int, int> > dequePairs;
     splitCollection(deque, dequePairs);
     printPairs(dequePairs);
+
+    //////////////////////////////////////////
+    // Compare the pairs to find the largest element
+    std::cout << "\n\e[34mCompare the pairs to find the largest element\e[;m\n";
+    std::cout << "\e[35mVector pairs: \e[;m" << std::endl;
+    pairSort(vectorPairs);
+    printPairs(vectorPairs);
+    std::cout << "on the side: ";
+    printContainer(vector);
+
+    std::cout << "\n\e[35mDeque pairs: \e[;m" << std::endl;
+    pairSort(dequePairs);
+    printPairs(dequePairs);
+    std::cout << "on the side: ";
+    printContainer(deque);
 
     printBothContainers(vector, deque);
 }
