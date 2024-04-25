@@ -56,6 +56,7 @@ void splitCollection(Container& container, Pairs& pairs) {
     size_t max = container.size();
 
     // If the size is odd, save it and pop it
+    // TODO: put the odd element in a separate container or pair
     int save = -1;
     if (container.size() % 2 != 0) {
         max--;
@@ -85,6 +86,7 @@ template <typename Container, typename Pairs>
 void pushLargestElementBack(Container& container, Pairs& pairs) {
     for (size_t i = 0; i < pairs.size(); i++)
         container.push_back(pairs[i].first);
+    // std::sort(container.begin(), container.end());
 }
 
 template <typename Container, typename Pairs>
