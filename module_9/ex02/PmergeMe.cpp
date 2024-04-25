@@ -31,6 +31,15 @@ void printBothContainers(
     printContainer(deque);
 }
 
+// TODO: REMOVE ME
+template <typename Pairs>
+void printPairs(const Pairs& pairs) {
+    for (size_t i = 0; i < pairs.size(); i++) {
+        std::cout << std::setw(5) << pairs[i].first << " " << std::setw(5)
+                  << pairs[i].second << " " << std::endl;
+    }
+}
+
 PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     fillContainer(av, vector);
     fillContainer(av, deque);
