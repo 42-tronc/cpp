@@ -67,6 +67,14 @@ void pushLargestElementBack(Container& container, Pairs& pairs) {
         container.push_back(pairs[i].first);
 }
 
+template <typename Container, typename Pairs>
+void pushRemaining(Container& container, Pairs& pairs) {
+    for (size_t i = 0; i < pairs.size(); i++)
+        container.insert(std::lower_bound(container.begin(), container.end(),
+                             pairs[i].second),
+            pairs[i].second);
+}
+
 // TODO: REMOVE ME
 template <typename Pairs>
 void printPairs(const Pairs& pairs) {
@@ -132,6 +140,12 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::sort(deque.begin(), deque.end());
     printContainer(deque);
 
+    //////////////////////////////////////////
+    // Insert at the right position the remaining elements from the pair
+    std::cout << "\n\e[34mInsert the remaining elements from the pair "
+                 "container\e[;m\n";
+    pushRemaining(vector, vectorPairs);
+    pushRemaining(deque, dequePairs);
     printBothContainers(vector, deque);
 }
 
