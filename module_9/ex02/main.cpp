@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits>
 
 #include "PmergeMe.hpp"
 
@@ -29,6 +28,8 @@ void isValidInput(int ac, char* av[]) {
             throw std::invalid_argument("invalid argument (" + str + ")");
         if (num > std::numeric_limits<int>::max())
             throw std::invalid_argument("number is over the int limit");
+        else if (num < 0)
+            throw std::invalid_argument("number is negative");
     }
 }
 
