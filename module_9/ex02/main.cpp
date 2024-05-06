@@ -32,7 +32,7 @@ void isValidInput(int ac, char* av[]) {
             throw std::invalid_argument("number is negative");
     }
 
-    std::cout << std::setw(18) << std::left << "\e[35mBefore\e[;m:";
+    std::cout << std::setw(18) << std::left << "\e[31mBefore\e[;m:";
     for (int i = 1; i < ac; i++)
         std::cout << av[i] << " ";
 }
@@ -44,6 +44,16 @@ int main(int ac, char* av[]) {
         isValidInput(ac, av);
 
         PmergeMe pmergeMe(av);
+
+        std::cout << "\n\n\e[33mProcess time for " << ac - 1 << " elements\n"
+                  << std::setw(13) << std::left
+                  << "\e[35mVector:" << std::setw(5) << std::right
+                  << pmergeMe.getVectorTime() << " µs\n"
+                  << std::setw(13) << std::left
+                  << "\e[35mDeque:" << std::setw(5) << std::right
+                  << pmergeMe.getDequeTime() << " µs\n"
+                  << std::endl;
+
     } catch (const std::exception& ex) {
         printError(ex.what());
         return 1;

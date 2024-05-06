@@ -1,5 +1,7 @@
 #include "PmergeMe.hpp"
 
+#include <ctime>
+
 template <typename T>
 void fillContainer(char** av, T& container) {
     for (int i = 1; av[i]; i++) {
@@ -91,10 +93,18 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::vector<std::pair<int, int> > vectorPairs;
     std::deque<std::pair<int, int> > dequePairs;
 
+    std::clock_t start = std::clock();
     mergeInsertSort(av, vector, vectorPairs);
-    mergeInsertSort(av, deque, dequePairs);
+    std::clock_t end = std::clock();
 
-    std::cout << std::endl << std::setw(18) << std::left << "\e[35mAfter\e[;m:";
+    execTimeVector =
+        static_cast<double>(end - start) * 1000000 / CLOCKS_PER_SEC;
+    start = std::clock();
+    mergeInsertSort(av, deque, dequePairs);
+    end = std::clock();
+    execTimeDeque = static_cast<double>(end - start) * 1000000 / CLOCKS_PER_SEC;
+
+    std::cout << std::endl << std::setw(18) << std::left << "\e[32mAfter\e[;m:";
     for (size_t i = 0; i < vector.size(); i++) {
         std::cout << vector[i] << " ";
     }
@@ -105,6 +115,14 @@ PmergeMe::PmergeMe(const PmergeMe& other) {
 }
 
 PmergeMe::~PmergeMe() {}
+
+double PmergeMe::getVectorTime() {
+    return this->execTimeVector;
+}
+
+double PmergeMe::getDequeTime() {
+    return this->execTimeDeque;
+}
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
     if (this != &other) {

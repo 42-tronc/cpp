@@ -26,6 +26,9 @@ public:
     PmergeMe(const PmergeMe &other);
     ~PmergeMe();
 
+    double getVectorTime();
+    double getDequeTime();
+
     PmergeMe &operator=(const PmergeMe &other);
 
 private:
