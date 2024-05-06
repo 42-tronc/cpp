@@ -59,12 +59,9 @@ void splitCollection(Container& container, Pairs& pairs) {
         container.pop_back();
     }
 
-    for (size_t i = 0; i < max; i += 2) {
+    for (size_t i = 0; i < max; i += 2)
         pairs.push_back(std::make_pair(container[i], container[i + 1]));
-        // container.pop_back();
-        // container.pop_back();
-    }
-    printPairs(pairs);
+
     container.clear();
 }
 
@@ -79,7 +76,6 @@ template <typename Container, typename Pairs>
 void pushLargestElementBack(Container& container, Pairs& pairs) {
     for (size_t i = 0; i < pairs.size(); i++)
         container.push_back(pairs[i].first);
-    // std::sort(container.begin(), container.end());
 }
 
 template <typename Container, typename Pairs>
@@ -133,7 +129,6 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     mergeInsertSort(av, vector, vectorPairs);
     mergeInsertSort(av, deque, dequePairs);
 
-    // printBothContainers(vector, deque);
     std::cout << std::endl << std::setw(18) << std::left << "\e[35mAfter\e[;m:";
     printContainer(vector);
 }
