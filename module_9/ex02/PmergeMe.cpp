@@ -98,12 +98,8 @@ void pushRemaining(Container& container, Pairs& pairs) {
         // Determine the maximum position for insertion based on the first
         // element of the pair
         typename Container::iterator maxPos =
-            container.begin() + pairs[i].first;
-
-        // Ensure maxPos does not exceed the end of the container
-        if (maxPos > container.end()) {
-            maxPos = container.end();
-        }
+            container.begin() +
+            std::min(pairs[i].first, static_cast<int>(container.size()) - 1);
 
         // Find the position to insert pairs[i].second in the sorted container,
         // up to maxPos
