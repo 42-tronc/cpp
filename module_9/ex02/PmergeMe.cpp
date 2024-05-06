@@ -79,7 +79,7 @@ void splitCollection(Container& container, Pairs& pairs) {
 }
 
 template <typename Pairs>
-void pairSort(Pairs& pairs) {
+void pairSwap(Pairs& pairs) {
     for (size_t i = 0; i < pairs.size(); i++)
         if (pairs[i].first < pairs[i].second)
             std::swap(pairs[i].first, pairs[i].second);
@@ -120,7 +120,7 @@ void mergeInsertSort(char** av, Container& container, Pairs& pairs) {
     splitCollection(container, pairs);
 
     // Compare the pairs to find the largest element
-    pairSort(pairs);
+    pairSwap(pairs);
 
     // Sort the pair container
     std::sort(pairs.begin(), pairs.end());
