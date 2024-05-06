@@ -1,40 +1,5 @@
 #include "PmergeMe.hpp"
 
-// TODO: REMOVE ME
-template <typename T>
-void printContainer(const T& container) {
-    for (size_t i = 0; i < container.size(); i++) {
-        std::cout << container[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
-template <typename Pairs>
-void printPairs(const Pairs& pairs) {
-    for (size_t i = 0; i < pairs.size(); i++) {
-        std::cout << std::setw(5) << pairs[i].first << " " << std::setw(5)
-                  << pairs[i].second << " " << std::endl;
-    }
-}
-
-void printBothContainers(
-    const std::vector<int>& vector, const std::deque<int>& deque) {
-    (void)vector;
-    std::cout << "\e[35mVector: \e[;m";
-    printContainer(vector);
-    std::cout << "\e[35mDeque: \e[;m";
-    printContainer(deque);
-}
-
-void printBothPairs(const std::vector<std::pair<int, int> >& vectorPairs,
-    const std::deque<std::pair<int, int> >& dequePairs) {
-    std::cout << "\e[35mVector pairs: \e[;m" << std::endl;
-    printPairs(vectorPairs);
-    std::cout << "\e[35mDeque pairs: \e[;m" << std::endl;
-    printPairs(dequePairs);
-}
-//////////////////////////////////////////
-
 template <typename T>
 void fillContainer(char** av, T& container) {
     for (int i = 1; av[i]; i++) {
@@ -130,7 +95,9 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     mergeInsertSort(av, deque, dequePairs);
 
     std::cout << std::endl << std::setw(18) << std::left << "\e[35mAfter\e[;m:";
-    printContainer(vector);
+    for (size_t i = 0; i < vector.size(); i++) {
+        std::cout << vector[i] << " ";
+    }
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other) {
