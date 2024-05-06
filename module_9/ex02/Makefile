@@ -138,9 +138,11 @@ run: all
 # $(VALGRIND) ./$(NAME) 1 1 $(VALGRIND_SUFFIX) || true
 # $(call printTest, "too big of a number")
 # $(VALGRIND) ./$(NAME) 100 200 2147483648 $(VALGRIND_SUFFIX) || true
-# $(call printTest, "10 random numbers")
-# $(VALGRIND) ./$(NAME) $(shell shuf --head-count=11 --input-range=1-100) $(VALGRIND_SUFFIX)
-	$(call printTest, "3001 numbers")
-	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=3000 --input-range=1-10000) $(VALGRIND_SUFFIX)
+	$(call printTest, "11 random numbers")
+	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=11 --input-range=1-100) $(VALGRIND_SUFFIX)
+	$(call printTest, "60 random numbers")
+	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=60 --input-range=1-100) $(VALGRIND_SUFFIX)
+# $(call printTest, "3001 numbers")
+# @$(VALGRIND) ./$(NAME) $(shell shuf --head-count=3000 --input-range=1-10000) $(VALGRIND_SUFFIX)
 
 .PHONY: all clean fclean re debug valgrind run
