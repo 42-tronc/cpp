@@ -46,12 +46,12 @@ int main(int ac, char* av[]) {
         PmergeMe pmergeMe(av);
 
         std::cout << "\n\n\e[33mProcess time for " << ac - 1 << " elements\n"
-                  << std::setw(13) << std::left
-                  << "\e[35mVector:" << std::setw(5) << std::right
-                  << pmergeMe.getVectorTime() << " µs\n"
-                  << std::setw(13) << std::left
-                  << "\e[35mDeque:" << std::setw(5) << std::right
-                  << pmergeMe.getDequeTime() << " µs\n"
+                  << std::setw(13) << std::left << "\e[35mVector:\e[;m"
+                  << std::setw(5) << std::right << pmergeMe.getVectorTime()
+                  << " µs\n"
+                  << std::setw(13) << std::left << "\e[35mDeque:\e[;m"
+                  << std::setw(5) << std::right << pmergeMe.getDequeTime()
+                  << " µs\n"
                   << std::endl;
 
     } catch (const std::exception& ex) {
