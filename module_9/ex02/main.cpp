@@ -59,9 +59,6 @@ int main(int ac, char* av[]) {
         return 1;
     }
 
-    std::cout << "\n\e[1;32mSuccess\e[;32m - All arguments are valid.\e[0m\n"
-              << std::endl;
-
     return 0;
 }
 
