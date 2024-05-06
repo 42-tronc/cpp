@@ -61,19 +61,3 @@ int main(int ac, char* av[]) {
 
     return 0;
 }
-
-/* TODO:
-[x] take positive int as args
-[x] use one of those 2 containers: deque, vector, ~list~
-[x] error to cout
-[x] duplicate error
-[] use the merge-insertion sort algorithm (Ford-Johnson algorithm)
-[] take at least 3000 ints
-[] 1st line print the unsorted list
-[] 2nd line print the sorted list
-[] 3rd line print the exec time
-[] 4th line print the exec time
-
-
-
-*/
