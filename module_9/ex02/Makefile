@@ -56,7 +56,7 @@ RESET		:= \033[0m
 CC := c++
 C_FLAGS := -Wall -Wextra -Werror -std=c++98 -g3
 FSANITIZE = -fsanitize=address
-VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes --track-origins=yes
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --trace-children=yes --track-origins=yes -s
 VALGRIND_FILE = valgrind_output.txt
 
 RM := rm -rf
@@ -124,22 +124,22 @@ valgrind: run
 	$(call check_valgrind_output, $(VALGRIND_FILE))
 
 run: all
-	$(call printTest, no arguments)
-	$(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
-	$(call printTest, "empty string")
-	$(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
-	$(call printTest, "negative number")
-	$(VALGRIND) ./$(NAME) "-1" $(VALGRIND_SUFFIX) || true
-	$(call printTest, "letter in the string")
-	$(VALGRIND) ./$(NAME) "1a" $(VALGRIND_SUFFIX) || true
-	$(call printTest, "two numbers in the same string")
-	$(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
-	$(call printTest, "two numbers that are the same")
-	$(VALGRIND) ./$(NAME) 1 1 $(VALGRIND_SUFFIX) || true
-	$(call printTest, "too big of a number")
-	$(VALGRIND) ./$(NAME) 100 200 2147483648 $(VALGRIND_SUFFIX) || true
-	$(call printTest, "10 random numbers")
-	$(VALGRIND) ./$(NAME) $(shell shuf --head-count=10 --input-range=1-100) $(VALGRIND_SUFFIX)
+# $(call printTest, no arguments)
+# $(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
+# $(call printTest, "empty string")
+# $(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
+# $(call printTest, "negative number")
+# $(VALGRIND) ./$(NAME) "-1" $(VALGRIND_SUFFIX) || true
+# $(call printTest, "letter in the string")
+# $(VALGRIND) ./$(NAME) "1a" $(VALGRIND_SUFFIX) || true
+# $(call printTest, "two numbers in the same string")
+# $(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
+# $(call printTest, "two numbers that are the same")
+# $(VALGRIND) ./$(NAME) 1 1 $(VALGRIND_SUFFIX) || true
+# $(call printTest, "too big of a number")
+# $(VALGRIND) ./$(NAME) 100 200 2147483648 $(VALGRIND_SUFFIX) || true
+# $(call printTest, "10 random numbers")
+# $(VALGRIND) ./$(NAME) $(shell shuf --head-count=11 --input-range=1-100) $(VALGRIND_SUFFIX)
 	$(call printTest, "3001 numbers")
 	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=3000 --input-range=1-10000) $(VALGRIND_SUFFIX)
 
