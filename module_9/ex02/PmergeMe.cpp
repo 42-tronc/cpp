@@ -1,7 +1,5 @@
 #include "PmergeMe.hpp"
 
-#include <iomanip>
-
 // TODO: REMOVE ME
 template <typename T>
 void printContainer(const T& container) {
@@ -139,7 +137,9 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     mergeInsertSort(av, vector, vectorPairs);
     mergeInsertSort(av, deque, dequePairs);
 
-    printBothContainers(vector, deque);
+    // printBothContainers(vector, deque);
+    std::cout << std::endl << std::setw(18) << std::left << "\e[35mAfter\e[;m:";
+    printContainer(vector);
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other) {
