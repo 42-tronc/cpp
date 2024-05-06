@@ -67,10 +67,11 @@ void splitCollection(Container& container, Pairs& pairs) {
 
     for (size_t i = 0; i < max; i += 2) {
         pairs.push_back(std::make_pair(container[i], container[i + 1]));
-        container.pop_back();
-        container.pop_back();
+        // container.pop_back();
+        // container.pop_back();
     }
     printPairs(pairs);
+    container.clear();
 
     // If the size is odd, push the last element back
     if (save != -1)
