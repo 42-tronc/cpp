@@ -85,6 +85,10 @@ void pushLargestElementBack(Container& container, Pairs& pairs) {
 template <typename Container, typename Pairs>
 void pushRemaining(Container& container, Pairs& pairs) {
     for (size_t i = 0; i < pairs.size(); i++) {
+        // If there are an odd number of args, skip the pair with the -1
+        if (pairs[i].second == -1)
+            continue;
+
         // Determine the maximum position for insertion based on the first
         // element of the pair
         typename Container::iterator maxPos =
