@@ -53,12 +53,8 @@ template <typename Container, typename Pairs>
 void splitCollection(Container& container, Pairs& pairs) {
     size_t max = container.size();
 
-    // If the size is odd, save it and pop it
-    // TODO: put the odd element in a separate container or pair
-    int save = -1;
     if (container.size() % 2 != 0) {
         max--;
-        // save = container[max];
         pairs.push_back(std::make_pair(container[max], -1));
         container.pop_back();
     }
@@ -70,10 +66,6 @@ void splitCollection(Container& container, Pairs& pairs) {
     }
     printPairs(pairs);
     container.clear();
-
-    // If the size is odd, push the last element back
-    if (save != -1)
-        container.push_back(save);
 }
 
 template <typename Pairs>
