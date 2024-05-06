@@ -31,6 +31,10 @@ void isValidInput(int ac, char* av[]) {
         else if (num < 0)
             throw std::invalid_argument("number is negative");
     }
+
+    std::cout << std::setw(18) << std::left << "\e[35mBefore\e[;m:";
+    for (int i = 1; i < ac; i++)
+        std::cout << av[i] << " ";
 }
 
 int main(int ac, char* av[]) {
