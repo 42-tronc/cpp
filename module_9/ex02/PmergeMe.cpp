@@ -111,14 +111,12 @@ void pushRemaining(Container& container, Pairs& pairs) {
     }
 }
 
-template <typename Container>
-void mergeInsertSort(char** av, Container& container) {
+template <typename Container, typename Pairs>
+void mergeInsertSort(char** av, Container& container, Pairs& pairs) {
     // Fill the container with the input arguments
     fillContainer(av, container);
 
     // Group the elements in n/2 pairs
-    std::vector<std::pair<int, int> > pairs;
-    // std::deque<std::pair<int, int> > dequePairs;
     splitCollection(container, pairs);
 
     // Compare the pairs to find the largest element
@@ -135,8 +133,11 @@ void mergeInsertSort(char** av, Container& container) {
 }
 
 PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
-    mergeInsertSort(av, vector);
-    mergeInsertSort(av, deque);
+    std::vector<std::pair<int, int> > vectorPairs;
+    std::deque<std::pair<int, int> > dequePairs;
+
+    mergeInsertSort(av, vector, vectorPairs);
+    mergeInsertSort(av, deque, dequePairs);
 
     printBothContainers(vector, deque);
 }
