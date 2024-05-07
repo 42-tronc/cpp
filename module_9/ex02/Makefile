@@ -124,20 +124,20 @@ valgrind: run
 	$(call check_valgrind_output, $(VALGRIND_FILE))
 
 run: all
-# $(call printTest, no arguments)
-# $(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
-# $(call printTest, "empty string")
-# $(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
-# $(call printTest, "negative number")
-# $(VALGRIND) ./$(NAME) "-1" $(VALGRIND_SUFFIX) || true
-# $(call printTest, "letter in the string")
-# $(VALGRIND) ./$(NAME) "1a" $(VALGRIND_SUFFIX) || true
-# $(call printTest, "two numbers in the same string")
-# $(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
-# $(call printTest, "two numbers that are the same")
-# $(VALGRIND) ./$(NAME) 1 1 $(VALGRIND_SUFFIX) || true
-# $(call printTest, "too big of a number")
-# $(VALGRIND) ./$(NAME) 100 200 2147483648 $(VALGRIND_SUFFIX) || true
+	$(call printTest, no arguments)
+	@$(VALGRIND) ./$(NAME) $(VALGRIND_SUFFIX) || true
+	$(call printTest, "empty string")
+	@$(VALGRIND) ./$(NAME) "" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "negative number")
+	@$(VALGRIND) ./$(NAME) "-1" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "letter in the string")
+	@$(VALGRIND) ./$(NAME) "1a" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "two numbers in the same string")
+	@$(VALGRIND) ./$(NAME) "1 2" $(VALGRIND_SUFFIX) || true
+	$(call printTest, "two numbers that are the same")
+	@$(VALGRIND) ./$(NAME) 1 1 $(VALGRIND_SUFFIX) || true
+	$(call printTest, "too big of a number")
+	@$(VALGRIND) ./$(NAME) 100 200 2147483648 $(VALGRIND_SUFFIX) || true
 	$(call printTest, "4 random numbers")
 	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=4 --input-range=1-100) $(VALGRIND_SUFFIX)
 	$(call printTest, "11 random numbers")
@@ -146,7 +146,7 @@ run: all
 	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=60 --input-range=1-100) $(VALGRIND_SUFFIX)
 	$(call printTest, "1000 random numbers")
 	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=1000 --input-range=1-10000) $(VALGRIND_SUFFIX)
-	$(call printTest, "3001 numbers")
+	$(call printTest, "3000 numbers")
 	@$(VALGRIND) ./$(NAME) $(shell shuf --head-count=3000 --input-range=1-10000) $(VALGRIND_SUFFIX)
 
 .PHONY: all clean fclean re debug valgrind run
