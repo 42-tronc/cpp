@@ -99,7 +99,7 @@ void getData(bool isDataCsv, std::string& date, double& value,
     const std::string& line, std::string& delimiter) {
     std::istringstream iss(line);
 
-    if (isDataCsv) {
+    if (isDataCsv) {  // TODO: fix value parsing
         std::string valueStr;
         std::getline(iss, date, ',');
         std::getline(iss, valueStr);
