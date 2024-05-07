@@ -16,10 +16,11 @@ void isValidInput(int ac, char* av[]) {
         if (str.find_first_not_of("0123456789") != std::string::npos)
             throw std::invalid_argument("invalid argument (" + str + ")");
         // check for duplicates
-        for (int j = i + 1; j < ac; j++) {
-            if (str == av[j])
-                throw std::invalid_argument("duplicate argument (" + str + ")");
-        }
+        // for (int j = i + 1; j < ac; j++) {
+        //     if (str == av[j])
+        //         throw std::invalid_argument("duplicate argument (" + str +
+        //         ")");
+        // }
 
         std::istringstream iss(str);
         long num;
