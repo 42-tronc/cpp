@@ -96,9 +96,9 @@ PmergeMe::PmergeMe(char** av) : execTimeVector(0), execTimeDeque(0) {
     std::clock_t start = std::clock();
     mergeInsertSort(av, vector, vectorPairs);
     std::clock_t end = std::clock();
-
     execTimeVector =
         static_cast<double>(end - start) * 1000000 / CLOCKS_PER_SEC;
+
     start = std::clock();
     mergeInsertSort(av, deque, dequePairs);
     end = std::clock();
