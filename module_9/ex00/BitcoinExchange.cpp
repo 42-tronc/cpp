@@ -68,7 +68,7 @@ bool isFutureDate(int year, int month, int day) {
 
 void checkDate(bool isDataCsv, const std::string& date) {
     if (date.length() != 10)
-        throw std::runtime_error("date is not 10 characters long");
+        throw std::runtime_error("date is not in the format YYYY-MM-DD");
 
     std::istringstream iss(date);
     int year, month, day;
