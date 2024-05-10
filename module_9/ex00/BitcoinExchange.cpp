@@ -98,7 +98,7 @@ void checkDate(bool isDataCsv, const std::string& date) {
 void getData(bool isDataCsv, std::string& date, double& value,
     const std::string& line, std::string& delimiter) {
     std::istringstream iss(line);
-        std::string valueStr;
+    std::string valueStr;
 
     if (isDataCsv) {
         std::getline(iss, date, ',');
@@ -109,17 +109,17 @@ void getData(bool isDataCsv, std::string& date, double& value,
         std::getline(iss, date, ' ');
         std::getline(iss, delimiter, ' ');
     }
-        std::getline(iss, valueStr);
+    std::getline(iss, valueStr);
 
     if (valueStr.find_first_not_of("0123456789.") != std::string::npos)
         throw std::runtime_error("value is not a number");
 
-        std::istringstream issValue(valueStr);
-        issValue >> value;
+    std::istringstream issValue(valueStr);
+    issValue >> value;
 
-        if (line.length() <= 11 || issValue.fail() || iss.fail() ||
-            valueStr.empty())
-            throw std::runtime_error("invalid line format");
+    if (line.length() <= 11 || issValue.fail() || iss.fail() ||
+        valueStr.empty())
+        throw std::runtime_error("invalid line format");
 }
 
 void BitcoinExchange::processLine(const std::string& line, bool isDataCsv) {
