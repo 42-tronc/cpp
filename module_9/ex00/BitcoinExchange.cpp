@@ -111,6 +111,9 @@ void getData(bool isDataCsv, std::string& date, double& value,
     }
         std::getline(iss, valueStr);
 
+    if (valueStr.find_first_not_of("0123456789.") != std::string::npos)
+        throw std::runtime_error("value is not a number");
+
         std::istringstream issValue(valueStr);
         issValue >> value;
 
