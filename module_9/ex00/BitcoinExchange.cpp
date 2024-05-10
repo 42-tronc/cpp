@@ -98,10 +98,17 @@ void checkDate(bool isDataCsv, const std::string& date) {
 void getData(bool isDataCsv, std::string& date, double& value,
     const std::string& line, std::string& delimiter) {
     std::istringstream iss(line);
-
-    if (isDataCsv) {  // TODO: fix value parsing
         std::string valueStr;
+
+    if (isDataCsv) {
         std::getline(iss, date, ',');
+        if (line.size() < 10)
+            throw std::runtime_error("delimiter is missing");
+        delimiter = line[10];
+    } else {
+        std::getline(iss, date, ' ');
+        std::getline(iss, delimiter, ' ');
+    }
         std::getline(iss, valueStr);
 
         std::istringstream issValue(valueStr);
@@ -110,12 +117,6 @@ void getData(bool isDataCsv, std::string& date, double& value,
         if (line.length() <= 11 || issValue.fail() || iss.fail() ||
             valueStr.empty())
             throw std::runtime_error("invalid line format");
-        delimiter = line.at(10);
-    } else {
-        iss >> date >> delimiter >> value;
-        if (iss.fail())
-            throw std::runtime_error("invalid line format");
-    }
 }
 
 void BitcoinExchange::processLine(const std::string& line, bool isDataCsv) {
