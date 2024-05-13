@@ -112,7 +112,15 @@ void getData(bool isDataCsv, std::string& date, double& value,
     std::getline(iss, valueStr);
 
     if (valueStr.find_first_not_of("0123456789.") != std::string::npos)
-        throw std::runtime_error("value is not a number");
+        throw std::runtime_error("value is not a valid number");
+
+    size_t dots = 0;
+    for (size_t i = 0; i < valueStr.length(); i++) {
+        if (valueStr[i] == '.')
+            dots++;
+    }
+    if (dots > 1)
+        throw std::runtime_error("value can only have one dot");
 
     std::istringstream issValue(valueStr);
     issValue >> value;
